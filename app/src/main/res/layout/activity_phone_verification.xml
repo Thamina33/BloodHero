@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    tools:context=".PhoneVerification">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/arrow_back_pink"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verify Number"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:layout_gravity="top"
+        android:gravity="left"
+        android:layout_marginLeft="25dp"
+        android:fontFamily="@font/mon_regular"
+        android:layout_marginTop="25dp"/>
+
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="20dp"
+        android:text="Enter your phone number"
+        android:textColor="#a2a2a2"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/mon_regular"
+        android:background="@drawable/gray_btn_back"/>
+
+    <Button
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:text="GET OTP"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/mon_bold"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/gradient_back_redious"/>
+
+
+
+</LinearLayout>
