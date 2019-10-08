@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "225965874562",
+    "firebase_url": "https://blood-hero-3c25c.firebaseio.com",
+    "project_id": "blood-hero-3c25c",
+    "storage_bucket": "blood-hero-3c25c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225965874562:android:90107223a0aaed7c3ac39b",
+        "android_client_info": {
+          "package_name": "com.example.bloodhero"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225965874562-11vaud5qtuqgpesbpkfim78lm5epkuuv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bloodhero",
+            "certificate_hash": "6d5cb9cc22afdf49387a148652c645f0eac1b1ff"
+          }
+        },
+        {
+          "client_id": "225965874562-2k3jpka3c4cumqmb0cc23cnvdts3kv89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJ7pcicfoNie5iMEIzISzpPqtkxMX1C-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225965874562-2k3jpka3c4cumqmb0cc23cnvdts3kv89.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

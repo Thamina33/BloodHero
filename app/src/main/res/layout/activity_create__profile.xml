@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".create_Profile">
+
+    <androidx.appcompat.widget.Toolbar
+        android:elevation="8dp"
+        android:background="#ffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/backBtnAdd"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/backword_sign"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="normal"
+                    android:textSize="18sp"
+                    android:textColor="#D0CECE"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Become Donor"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:layout_gravity="center|top"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/mon_regular"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <EditText
+        android:id="@+id/dName"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:gravity="left|center"
+        android:paddingStart="25dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="20dp"
+        android:hint="Name"
+        android:text=""
+        android:textColorHint="#a2a2a2"
+        android:textColor="#000000"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/mon_regular"
+        android:background="@drawable/gray_btn_back"/>
+
+    <EditText
+        android:id="@+id/dEmail"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:inputType="textEmailAddress"
+        android:gravity="left|center"
+        android:paddingStart="25dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:hint="Email"
+        android:text=""
+        android:textColorHint="#a2a2a2"
+        android:textColor="#000000"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/mon_regular"
+        android:background="@drawable/gray_btn_back"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gender"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:layout_gravity="top"
+        android:gravity="left"
+        android:layout_marginLeft="25dp"
+        android:fontFamily="@font/mon_regular"
+        android:layout_marginTop="20dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/gmale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/m_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/male"
+                />
+            <TextView
+                android:id="@+id/m_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#a2a2a2"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:fontFamily="@font/mon_regular"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="#a2a2a2"/>
+        <LinearLayout
+            android:id="@+id/gfemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/f_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/female"
+                />
+            <TextView
+                android:id="@+id/f_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#a2a2a2"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:fontFamily="@font/mon_regular"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Blood Group"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:layout_gravity="top"
+        android:gravity="left"
+        android:layout_marginLeft="25dp"
+        android:fontFamily="@font/mon_regular"
+        android:layout_marginTop="25dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="left|center"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:gravity="left">
+
+        <Button
+            android:id="@+id/apos"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:text="A+"
+            android:layout_marginLeft="5dp"
+            android:textColor="#a2a2a2"
+            android:textSize="14dp"
+            android:fontFamily="@font/mon_regular"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/white_btn_gray_border"/>
+
+        <Button
+            android:id="@+id/amin"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/white_btn_gray_border"
+            android:fontFamily="@font/mon_regular"
+            android:gravity="center"
+            android:text="A-"
+            android:textColor="#a2a2a2"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/bpos"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:text="B+"
+            android:textColor="#a2a2a2"
+            android:textSize="14dp"
+            android:fontFamily="@font/mon_regular"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/white_btn_gray_border"/>
+        <Button
+            android:id="@+id/bmin"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:text="B-"
+            android:textColor="#a2a2a2"
+            android:textSize="14dp"
+            android:fontFamily="@font/mon_regular"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/white_btn_gray_border"/>
+        <Button
+            android:id="@+id/abpos"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:text="AB+"
+            android:textColor="#a2a2a2"
+            android:textSize="14dp"
+            android:fontFamily="@font/mon_regular"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/white_btn_gray_border"/>
+        <Button
+            android:id="@+id/abmin"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:text="AB-"
+            android:textColor="#a2a2a2"
+            android:textSize="14dp"
+            android:fontFamily="@font/mon_regular"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@drawable/white_btn_gray_border"/>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="left|center"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:gravity="left|center">
+
+        <Button
+            android:id="@+id/opos"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:text="O+"
+            android:layout_marginLeft="5dp"
+            android:textColor="#a2a2a2"
+            android:textSize="14dp"
+            android:fontFamily="@font/mon_regular"
+            android:textStyle="bold"
+            android:layout_gravity="left|center"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/white_btn_gray_border"/>
+        <Button
+            android:id="@+id/omin"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:text="O-"
+            android:textColor="#a2a2a2"
+            android:textSize="14dp"
+            android:fontFamily="@font/mon_regular"
+            android:textStyle="bold"
+            android:layout_gravity="left|center"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/white_btn_gray_border"/>
+
+
+
+
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/num_vgblity_prmisn"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:textStyle="normal"
+        android:fontFamily="@font/mon_regular"
+        android:textSize="14dp"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="Do you want to make your contact number
+visible for other" />
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom|center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|center"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:text="SUBMIT"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/mon_bold"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/gradient_back_redious"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
