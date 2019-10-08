@@ -181,7 +181,21 @@
 
 
     </LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
 
+        <ProgressBar
+            android:id="@+id/progresssbar"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:progressTint="#E40B27"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+
+    </FrameLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -201,8 +215,8 @@
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
         android:layout_gravity="left|center"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:gravity="left">
 
         <Button
@@ -210,7 +224,7 @@
             android:layout_width="41dp"
             android:layout_height="41dp"
             android:text="A+"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="30dp"
             android:textColor="#a2a2a2"
             android:textSize="14dp"
             android:fontFamily="@font/mon_regular"
@@ -278,6 +292,7 @@
             android:layout_width="41dp"
             android:layout_height="41dp"
             android:text="AB-"
+            android:layout_marginRight="5dp"
             android:textColor="#a2a2a2"
             android:textSize="14dp"
             android:fontFamily="@font/mon_regular"
@@ -295,8 +310,8 @@
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
         android:layout_gravity="left|center"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:gravity="left|center">
 
         <Button
@@ -304,7 +319,7 @@
             android:layout_width="41dp"
             android:layout_height="41dp"
             android:text="O+"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="30dp"
             android:textColor="#a2a2a2"
             android:textSize="14dp"
             android:fontFamily="@font/mon_regular"

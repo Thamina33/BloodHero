@@ -1,10 +1,12 @@
 package com.example.bloodhero;
 
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.app.Dialog;
 import android.graphics.Color;
 
 import android.os.Build;
@@ -17,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +27,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class create_Profile extends AppCompatActivity {
 
@@ -39,12 +43,14 @@ public class create_Profile extends AppCompatActivity {
     String numVisibility = "visible";
     String Uid;
     DatabaseReference mRef;
-
+    ProgressBar mbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create__profile);
+
+        mRef = FirebaseDatabase.getInstance().getReference("DonorInformation");
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -69,6 +75,8 @@ public class create_Profile extends AppCompatActivity {
         abpos = findViewById(R.id.abpos);
         submit = findViewById(R.id.submit);
         num_vgblity_prmisn = findViewById(R.id.num_vgblity_prmisn);
+        mbar = findViewById(R.id.progresssbar);
+        mbar.setVisibility(View.GONE);
 
 
         //selectinng blood
@@ -392,22 +400,24 @@ public class create_Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                mbar.setVisibility(View.VISIBLE);
                 String Name = dname.getText().toString();
                 String Email = dEmail.getText().toString();
 
-                if(!TextUtils.isEmpty(Name) && !TextUtils.isEmpty(Email)&& !bldGroup.contains("bloodGroup") && !gndr.contains("gender"))
-                {
+
+                if (!TextUtils.isEmpty(Name) && !TextUtils.isEmpty(Email) && !bldGroup.contains("bloodGroup") && !gndr.contains("gender")) {
 
 
-                    uploadDataToFireBase(Name , Email   , gndr , bldGroup , numVisibility );
-
-                }
-                else {
-                    Toast.makeText(getApplicationContext() , "Fill the Data Properly" , Toast.LENGTH_SHORT)
+                    uploadDataToFireBase(Name, Email, gndr, bldGroup, numVisibility);
+                    Toast.makeText(getApplicationContext(), Name + "" + Email + "" + bldGroup, Toast.LENGTH_SHORT)
                             .show();
 
-                }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Fill the Data Properly", Toast.LENGTH_SHORT)
+                            .show();
+                    mbar.setVisibility(View.GONE);
 
+                }
 
 
             }
@@ -417,12 +427,56 @@ public class create_Profile extends AppCompatActivity {
 
     public void uploadDataToFireBase(String name, String email, String gndr, String bldGroup, String numVisibility) {
 
-        String id  = mRef.push().getKey();
+        String id = mRef.push().getKey();
 
-        DonorInformation model = new DonorInformation(id  , Uid , name , email  , gndr ,  bldGroup, numVisibility  ) ;
+        DonorInformation model = new DonorInformation(id, Uid, name, email, gndr, bldGroup, numVisibility);
 
-        mRef.child(id).setValue(model);
-        Toast.makeText(getApplicationContext() , "Success" , Toast.LENGTH_SHORT)
-                .show();
+        mRef.child(id).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                mbar.setVisibility(View.VISIBLE);
+
+
+                OpenDialogue();
+
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), "Error :" + e.getMessage(), Toast.LENGTH_SHORT)
+                        .show();
+                mbar.setVisibility(View.GONE);
+            }
+        });
+    }
+
+
+    private void OpenDialogue() {
+
+        final Dialog dialog = new Dialog(create_Profile.this);
+        dialog.setContentView(R.layout.done_dialogue_in_profile);
+
+        Button okBtn = dialog.findViewById(R.id.okBtn);
+
+
+        dialog.setCancelable(false);
+
+        dialog.show();
+
+
+        okBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                dialog.dismiss();
+                finish();
+            }
+        });
+
+
     }
 }
+
+

@@ -9,8 +9,8 @@
             android:orientation="vertical"
             android:background="#ffff"
             >
-
-       <!-- <androidx.appcompat.widget.Toolbar
+<!--
+  <androidx.appcompat.widget.Toolbar
             android:elevation="8dp"
             android:background="#ffff"
             android:layout_width="match_parent"
@@ -352,7 +352,7 @@
                     android:textColor="#ffffff"
                     android:textStyle="bold" />
 
-        </LinearLayout>  !-->
+        </LinearLayout> !-->
 
 </LinearLayout>
 

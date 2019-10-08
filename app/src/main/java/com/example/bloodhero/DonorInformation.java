@@ -2,19 +2,19 @@ package com.example.bloodhero;
 
 public class DonorInformation {
 
-    String id,uid,name,mail,gender,bloodgroup,visibility;
+    String id,uid,name,mail,gender,bloodgroup,num_visibility;
 
     public DonorInformation() {
     }
 
-    public DonorInformation(String id, String uid, String name, String mail, String gender, String bloodgroup, String visibility) {
+    public DonorInformation(String id, String uid, String name, String mail, String gender, String bloodgroup, String num_visibility) {
         this.id = id;
         this.uid = uid;
         this.name = name;
         this.mail = mail;
         this.gender = gender;
         this.bloodgroup = bloodgroup;
-        this.visibility = visibility;
+        this.num_visibility = num_visibility;
     }
 
     public String getId() {
@@ -65,11 +65,11 @@ public class DonorInformation {
         this.bloodgroup = bloodgroup;
     }
 
-    public String getVisibility() {
-        return visibility;
+    public String getNum_visibility() {
+        return num_visibility;
     }
 
-    public void setVisibility(String visibility) {
-        this.visibility = visibility;
+    public void setNum_visibility(String num_visibility) {
+        this.num_visibility = num_visibility;
     }
 }
