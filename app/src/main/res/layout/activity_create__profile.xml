@@ -378,7 +378,7 @@ visible for other" />
             android:layout_gravity="bottom|center"
             android:gravity="center"
             android:layout_marginLeft="20dp"
-            android:text="SUBMIT"
+            android:text="DONE"
             android:textColor="#FFFFFF"
             android:fontFamily="@font/mon_bold"
             android:layout_marginRight="20dp"
