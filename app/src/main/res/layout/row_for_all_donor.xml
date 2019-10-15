@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/relatciveLayout"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="8dp"
+        android:elevation="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageIDRow"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/male" />
+
+            <TextView
+                android:id="@+id/nameRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@id/imageIDRow"
+                android:fontFamily="@font/mon_regular"
+                android:text="Mr.XYZ"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/deptNameRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="40dp"
+                android:layout_toEndOf="@id/imageIDRow"
+                android:fontFamily="@font/mon_regular"
+                android:text="BBA"
+                android:textColor="#8D8B8B"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/triggerDialogueRow"
+                android:layout_width="160dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="47dp"
+                android:layout_marginTop="65dp"
+                android:layout_marginBottom="15dp"
+                android:layout_toEndOf="@id/imageIDRow"
+                android:background="@drawable/trns_back_rect"
+                android:fontFamily="@font/mon_regular"
+                android:gravity="center"
+                android:hint="Ask For Help"
+                android:textColorHint="#ff245c"
+                android:textSize="15.5sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/bldGroupRow"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/trns_back"
+                android:fontFamily="@font/mon_regular"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="A+"
+                android:textColor="#ff245c"
+                android:textSize="20sp"
+                android:textStyle="normal" />
+
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/gradient_rect"
+                android:layout_height="30dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="0dp"
+
+                    android:fontFamily="@font/mon_regular"
+                    android:gravity="center_vertical|center"
+                    android:text="Last Date Of Donation : 28 Jan 2019"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/phnNumberRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0dp"
+                    android:fontFamily="@font/mon_regular"
+                    android:gravity="center_vertical|center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="0.1sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="0dp"
+                android:orientation="horizontal"
+
+                android:background="@drawable/gradient_rect"
+                android:layout_marginBottom="0dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/mon_regular"
+                    android:layout_marginLeft="10dp"
+                    android:text="Last Date OF Donation : "/>
+                <TextView
+                    android:id="@+id/lastDonationDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/mon_regular"
+                    android:layout_marginLeft="5dp"
+                    android:text="13 Jan 2019"
+                    android:layout_gravity="center"/>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
