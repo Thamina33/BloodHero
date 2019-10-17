@@ -1,13 +1,13 @@
 package com.example.bloodhero;
 
-public class DonorInformation {
+public class getProfile {
 
-    String id,uid,name,mail,gender,bloodgroup,num_visibility;
+    String id,uid,name,mail,gender,bloodgroup,num_visibility , is_available , user_pp;
 
-    public DonorInformation() {
+    public getProfile() {
     }
 
-    public DonorInformation(String id, String uid, String name, String mail, String gender, String bloodgroup, String num_visibility) {
+    public getProfile(String id, String uid, String name, String mail, String gender, String bloodgroup, String num_visibility, String is_available, String user_pp) {
         this.id = id;
         this.uid = uid;
         this.name = name;
@@ -15,6 +15,24 @@ public class DonorInformation {
         this.gender = gender;
         this.bloodgroup = bloodgroup;
         this.num_visibility = num_visibility;
+        this.is_available = is_available;
+        this.user_pp = user_pp;
+    }
+
+    public String getUser_pp() {
+        return user_pp;
+    }
+
+    public void setUser_pp(String user_pp) {
+        this.user_pp = user_pp;
+    }
+
+    public String getIs_available() {
+        return is_available;
+    }
+
+    public void setIs_available(String is_available) {
+        this.is_available = is_available;
     }
 
     public String getId() {

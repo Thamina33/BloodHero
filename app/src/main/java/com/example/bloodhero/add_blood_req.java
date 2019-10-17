@@ -1,100 +1,85 @@
 package com.example.bloodhero;
 
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
-
+import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Intent;
+import android.app.TimePickerDialog;
 import android.graphics.Color;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+import java.util.Calendar;
 
-public class create_Profile extends AppCompatActivity {
+public class add_blood_req extends AppCompatActivity {
+    TextView datePicker  , timePicker ;
+    DatePickerDialog datePickerDialog ;
+    String amPmChecker  , date  ="null", time ="null", Loc  ;
 
-    EditText dname, dEmail;
-    LinearLayout gmale, gfemale;
-    ImageView m_icon, f_icon;
-    TextView m_txt, f_txt;
-    Button apos, amin, bpos, bmin, abpos, abmin, opos, omin, submit;
-    CheckBox num_vgblity_prmisn;
-    String name, mail;
-    String bldGroup = "bloodGroup";
-    String gndr = "gender";
-    String numVisibility = "visible";
-    String Uid;
-    DatabaseReference mRef;
-    ProgressBar mbar;
-    FirebaseAuth mauth ;
+    Button apos ,amin , bpos , bmin , opos , omin , abpos , abmin  , backBtn;
+    String bldGroup = "bloodGroup" ;
+    Button submitBtn ;
+    EditText needer   ,  loc  ;
+    String  ph =  "nan" ;
+    String pp = " ";
+
+    DatabaseReference mRef ;
+    ProgressBar mbar ;
+
     String uid ;
-    CircleImageView imageView ;
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create__profile);
-
-        mRef = FirebaseDatabase.getInstance().getReference("getProfile");
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
-
-
-        mauth = FirebaseAuth.getInstance();
-        uid = mauth.getUid() ;
-//        String email  = mauth.getCurrentUser().getEmail() ;
-
-        dname = findViewById(R.id.dName);
-        dEmail = findViewById(R.id.dEmail);
-        gmale = findViewById(R.id.gmale);
-        gfemale = findViewById(R.id.gfemale);
-        m_icon = findViewById(R.id.m_icon);
-        f_icon = findViewById(R.id.f_icon);
-        f_txt = findViewById(R.id.f_txt);
-        m_txt = findViewById(R.id.m_txt);
+        setContentView(R.layout.activity_add_blood_req);
+        mRef = FirebaseDatabase.getInstance().getReference("bloodReqRepo");
         apos = findViewById(R.id.apos);
-        amin = findViewById(R.id.amin);
-        bmin = findViewById(R.id.bmin);
-        omin = findViewById(R.id.omin);
-        abmin = findViewById(R.id.abmin);
-        bpos = findViewById(R.id.bpos);
-        opos = findViewById(R.id.opos);
-        abpos = findViewById(R.id.abpos);
-        submit = findViewById(R.id.submit);
-        num_vgblity_prmisn = findViewById(R.id.num_vgblity_prmisn);
+        amin = findViewById(R.id.bldGroupIdAmin);
+        bpos = findViewById(R.id.bldGroupIdBpos);
+        bmin = findViewById(R.id.bldGroupIdBmin);
+        omin = findViewById(R.id.bldGroupIdOmin);
+        opos = findViewById(R.id.bldGroupIdOpos);
+        abmin = findViewById(R.id.bldGroupIdABmin);
+        abpos = findViewById(R.id.bldGroupIdABpos);
+        submitBtn = findViewById(R.id.submitBtn);
+        timePicker = findViewById(R.id.timeEdit);
+        datePicker = findViewById(R.id.dateEdit);
+        needer = findViewById(R.id.name_add);
+        loc = findViewById(R.id.loc);
         mbar = findViewById(R.id.progresssbar);
-        imageView = findViewById(R.id.profile_image) ;
         mbar.setVisibility(View.GONE);
+        backBtn = findViewById(R.id.backBtnAdd);
 
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
-     //   dEmail.setText(email);
-        //selectinng blood
+        //----------------------------->
 
         apos.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -362,119 +347,147 @@ public class create_Profile extends AppCompatActivity {
         });
 
 
-        //selecting gender
+        //<-----------------
 
-        gmale.setOnClickListener(new View.OnClickListener() {
+
+
+
+        submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                gndr = "Male";
-
-                m_icon.setBackground(getDrawable(R.drawable.pink_male));
-                m_txt.setTextColor(Color.parseColor("#FF245C"));
-
-
-                //set female color default
-
-                f_icon.setBackground(getDrawable(R.drawable.female));
-                f_txt.setTextColor(Color.parseColor("#a2a2a2"));
-
-            }
-        });
-
-        gfemale.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                gndr = "Female";
-
-                f_icon.setBackground(getDrawable(R.drawable.pink_female));
-                f_txt.setTextColor(Color.parseColor("#FF245C"));
-
-
-                //set female color default
-
-                m_icon.setBackground(getDrawable(R.drawable.male));
-                m_txt.setTextColor(Color.parseColor("#a2a2a2"));
-
-            }
-        });
-
-
-        num_vgblity_prmisn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (num_vgblity_prmisn.isChecked()) {
-                    numVisibility = "Yes";
-                } else {
-                    numVisibility = "No";
-                }
-            }
-        });
-
-
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
 
                 mbar.setVisibility(View.VISIBLE);
-                String Name = dname.getText().toString();
-                String Email = dEmail.getText().toString();
+
+                String Name = needer.getText().toString();
+                String LOc = loc.getText().toString();
 
 
-                if (!TextUtils.isEmpty(Name) && !TextUtils.isEmpty(Email) && !bldGroup.contains("bloodGroup") && !gndr.contains("gender")) {
+                if(!TextUtils.isEmpty(Name) && !TextUtils.isEmpty(LOc)&& !bldGroup.contains("bloodGroup")
+                ){
 
 
-                    uploadDataToFireBase(Name, Email, gndr, bldGroup, numVisibility);
-                    Toast.makeText(getApplicationContext(), Name + "" + Email + "" + bldGroup, Toast.LENGTH_SHORT)
+                    uploadDataToFireBase(Name , LOc   , ph , time , date );
+
+                    //   OpenDialogue();
+
+                    Toast.makeText(getApplicationContext() , Name + "" + LOc , Toast.LENGTH_SHORT )
                             .show();
 
-                } else {
-                    Toast.makeText(getApplicationContext(), "Fill the Data Properly", Toast.LENGTH_SHORT)
+                }
+                else {
+                    Toast.makeText(getApplicationContext() , "Fill the Data Properly" , Toast.LENGTH_SHORT)
                             .show();
                     mbar.setVisibility(View.GONE);
-
                 }
 
 
+
+            }
+        });
+
+
+
+        datePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // calling the date Picker
+
+                Calendar c = Calendar.getInstance();
+
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                int month = c.get(Calendar.MONTH);
+                int year = c.get(Calendar.YEAR);
+
+                datePickerDialog = new DatePickerDialog(add_blood_req.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                        datePicker.setText(dayOfMonth + "/"+(month+1)+"/"+year);
+                        date = dayOfMonth + "/"+(month+1)+"/"+year ;
+
+
+
+                    }
+                } ,year , month , day);
+
+                datePickerDialog.show();
+            }
+        });
+
+
+
+        timePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //calling the time picker
+
+                TimePickerDialog timePickerDialog  = new TimePickerDialog(add_blood_req.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+                        if (hourOfDay >= 12){
+                            amPmChecker = "AM";
+
+                        }
+                        else  {
+                            amPmChecker= "PM";
+                        }
+
+
+                        timePicker.setText(hourOfDay+":"+minute+" "+amPmChecker);
+
+                        time = hourOfDay+":"+minute+" "+amPmChecker ;
+
+                    }
+                }, 0,0, false);
+
+
+                timePickerDialog.show();
             }
         });
 
     }
 
-    public void uploadDataToFireBase(String name, String email, String gndr, String bldGroup, String numVisibility) {
+    private void uploadDataToFireBase(String name, String lOc, String ph, String time, String date) {
 
-        String id = mRef.push().getKey();
+        String id  = mRef.push().getKey();
 
-        getProfile model = new getProfile(id, uid, name, email, gndr, bldGroup, numVisibility , "TRUE" , null);
+        /// String postID , uid , needer  , loc , timee , datee , bg ;
 
-        mRef.child(uid).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
+        modelForBloodReq model = new modelForBloodReq(id  , uid , name , lOc  , time , date   , bldGroup, ph  , pp  ) ;
+
+        mRef.child(id).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 
-                mbar.setVisibility(View.INVISIBLE);
-
-                Intent intent = new Intent(create_Profile.this,HomePage.class);
-                startActivity(intent);
-             //   OpenDialogue();
-
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(), "Error :" + e.getMessage(), Toast.LENGTH_SHORT)
-                        .show();
                 mbar.setVisibility(View.GONE);
-            }
-        });
-    }
 
+                OpenDialogue();
+
+
+
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+
+                        Toast.makeText(getApplicationContext() , "Error :"+ e.getMessage() , Toast.LENGTH_SHORT)
+                                .show();
+                        mbar.setVisibility(View.GONE);
+                    }
+                });
+    }
 
     private void OpenDialogue() {
 
-        final Dialog dialog = new Dialog(create_Profile.this);
-        dialog.setContentView(R.layout.done_dialogue_in_profile);
+        final Dialog dialog  = new Dialog(add_blood_req.this);
+        dialog.setContentView(R.layout.done_dialogue_in_blood) ;
 
-        Button okBtn = dialog.findViewById(R.id.okBtn);
+        Button okBtn = dialog.findViewById(R.id.okBtn) ;
 
 
         dialog.setCancelable(false);
@@ -492,9 +505,38 @@ public class create_Profile extends AppCompatActivity {
         });
 
 
+
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseAuth mauth  = FirebaseAuth.getInstance();
+        uid = mauth.getUid() ;
 
+
+        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("Users").child(uid);
+
+        mref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                getProfile model = dataSnapshot.getValue(getProfile.class);
+
+                ph = model.getMail();
+                pp = model.getUser_pp() ;
+
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
 }
-
-

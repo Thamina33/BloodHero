@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="#ffff"
-            >
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffff"
+    >
+
         <androidx.appcompat.widget.Toolbar
             android:elevation="8dp"
             android:background="#ffff"
@@ -42,15 +43,14 @@
                                     android:textSize="18sp"
                                     android:textColor="#D0CECE"/>
                                 <TextView
+                                    android:fontFamily="@font/mon_bold"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Become Donor"
-                                    android:textSize="18sp"
+                                    android:text="Request For Blood"
                                     android:textStyle="bold"
+                                    android:textSize="18sp"
                                     android:textColor="#000"
-                                    android:layout_gravity="center|top"
                                     android:layout_marginStart="20dp"
-                                    android:fontFamily="@font/mon_regular"
                                     android:layout_marginTop="5dp"/>
 
                         </LinearLayout>
@@ -62,259 +62,298 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <TextView
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Blood For"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#000"
-            android:layout_gravity="top"
-            android:gravity="left"
-            android:layout_marginLeft="25dp"
-            android:fontFamily="@font/mon_regular"
-            android:layout_marginTop="30dp"/>
-
-        <EditText
-            android:id="@+id/bloodFor"
-            android:layout_width="350dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:gravity="left|center"
-            android:paddingStart="25dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:hint="Blood For"
-            android:text=""
-            android:textSize="16sp"
-            android:textColorHint="#a2a2a2"
-            android:textColor="#000000"
-            android:layout_marginRight="20dp"
-            android:fontFamily="@font/mon_regular"
-            android:background="@drawable/gray_btn_back"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Blood For"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#000"
-            android:layout_gravity="top"
-            android:gravity="left"
-            android:layout_marginLeft="25dp"
-            android:fontFamily="@font/mon_regular"
-            android:layout_marginTop="20dp"/>
-
-        <EditText
-            android:id="@+id/dEmail"
-            android:layout_width="350dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:inputType="textEmailAddress"
-            android:gravity="left|center"
-            android:paddingStart="25dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:hint="Email"
-            android:text=""
-            android:textColorHint="#a2a2a2"
-            android:textColor="#000000"
-            android:layout_marginRight="20dp"
-            android:fontFamily="@font/mon_regular"
-            android:background="@drawable/gray_btn_back"/>
-
-
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-                <ProgressBar
-                    android:id="@+id/progresssbar"
-                    style="@style/Widget.AppCompat.ProgressBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:progressTint="#E40B27"
-                    android:visibility="visible"
-                    tools:visibility="visible" />
-
-
-        </FrameLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Select Blood Group"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#000"
-            android:layout_gravity="top"
-            android:gravity="left"
-            android:layout_marginLeft="25dp"
-            android:fontFamily="@font/mon_regular"
-            android:layout_marginTop="25dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="left|center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:gravity="left">
-
-                <Button
-                    android:id="@+id/apos"
-                    android:layout_width="41dp"
-                    android:layout_height="41dp"
-                    android:text="A+"
-                    android:layout_marginLeft="30dp"
-                    android:textColor="#a2a2a2"
-                    android:textSize="14dp"
-                    android:fontFamily="@font/mon_regular"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/white_btn_gray_border"/>
-
-                <Button
-                    android:id="@+id/amin"
-                    android:layout_width="41dp"
-                    android:layout_height="41dp"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/white_btn_gray_border"
-                    android:fontFamily="@font/mon_regular"
-                    android:gravity="center"
-                    android:text="A-"
-                    android:textColor="#a2a2a2"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/bpos"
-                    android:layout_width="41dp"
-                    android:layout_height="41dp"
-                    android:text="B+"
-                    android:textColor="#a2a2a2"
-                    android:textSize="14dp"
-                    android:fontFamily="@font/mon_regular"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/white_btn_gray_border"/>
-                <Button
-                    android:id="@+id/bmin"
-                    android:layout_width="41dp"
-                    android:layout_height="41dp"
-                    android:text="B-"
-                    android:textColor="#a2a2a2"
-                    android:textSize="14dp"
-                    android:fontFamily="@font/mon_regular"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/white_btn_gray_border"/>
-                <Button
-                    android:id="@+id/abpos"
-                    android:layout_width="41dp"
-                    android:layout_height="41dp"
-                    android:text="AB+"
-                    android:textColor="#a2a2a2"
-                    android:textSize="14dp"
-                    android:fontFamily="@font/mon_regular"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/white_btn_gray_border"/>
-                <Button
-                    android:id="@+id/abmin"
-                    android:layout_width="41dp"
-                    android:layout_height="41dp"
-                    android:text="AB-"
-                    android:layout_marginRight="5dp"
-                    android:textColor="#a2a2a2"
-                    android:textSize="14dp"
-                    android:fontFamily="@font/mon_regular"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:background="@drawable/white_btn_gray_border"/>
-
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="left|center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:gravity="left|center">
-
-                <Button
-                    android:id="@+id/opos"
-                    android:layout_width="41dp"
-                    android:layout_height="41dp"
-                    android:text="O+"
-                    android:layout_marginLeft="30dp"
-                    android:textColor="#a2a2a2"
-                    android:textSize="14dp"
-                    android:fontFamily="@font/mon_regular"
-                    android:textStyle="bold"
-                    android:layout_gravity="left|center"
-                    android:gravity="center"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/white_btn_gray_border"/>
-                <Button
-                    android:id="@+id/omin"
-                    android:layout_width="41dp"
-                    android:layout_height="41dp"
-                    android:text="O-"
-                    android:textColor="#a2a2a2"
-                    android:textSize="14dp"
-                    android:fontFamily="@font/mon_regular"
-                    android:textStyle="bold"
-                    android:layout_gravity="left|center"
-                    android:gravity="center"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/white_btn_gray_border"/>
-
-
-
-
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_gravity="bottom|center"
-            android:gravity="center"
-            android:orientation="horizontal"
             android:layout_height="match_parent">
-                <Button
-                    android:id="@+id/submit"
-                    android:layout_width="350dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="bottom|center"
-                    android:gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:text="SUBMIT"
-                    android:textColor="#FFFFFF"
-                    android:fontFamily="@font/mon_bold"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/gradient_back_redious"/>
 
-        </LinearLayout>
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:fontFamily="@font/mon_bold"
+                            android:id="@+id/textView3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Blood For"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginTop="30dp"/>
+
+                        <EditText
+
+                            android:id="@+id/name_add"
+                            android:layout_width="350dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/gray_btn_back"
+                            android:hint="Friend"
+                            android:textColorHint="@color/black"
+                            android:textColor="#000000"
+                            android:fontFamily="@font/mon_regular"
+                            android:textSize="16sp"
+                            android:paddingStart="10dp"
+                            android:gravity="start|center_vertical"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="15dp"/>
+                        <TextView
+                            android:fontFamily="@font/mon_bold"
+                            android:layout_marginBottom="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Time Preference"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginTop="25dp"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_height="wrap_content">
+
+
+                                <TextView
+                                    android:id="@+id/timeEdit"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/edit_text_outline"
+                                    android:drawableLeft="@drawable/time_icon"
+                                    android:drawablePadding="10dp"
+                                    android:hint="00:00"
+                                    android:textColorHint="@color/reGrad"
+                                    android:gravity="start|center"
+                                    android:textSize="15sp"
+                                    android:textColor="#000"
+                                    android:textStyle="bold"
+                                    android:padding="10dp"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="10dp"
+                                    />
+
+
+                                <TextView
+                                    android:layout_marginEnd="20dp"
+                                    android:id="@+id/dateEdit"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:textColorHint="@color/reGrad"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/edit_text_outline"
+                                    android:drawableStart="@drawable/date_icon"
+                                    android:drawablePadding="10dp"
+                                    android:gravity="center|start"
+                                    android:textSize="15sp"
+                                    android:textColor="#000"
+                                    android:textStyle="bold"
+                                    android:hint="dd/mm/yyyy"
+                                    android:padding="10dp" />
+
+                        </LinearLayout>
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                                <ProgressBar
+                                    android:id="@+id/progresssbar"
+                                    style="@style/Widget.AppCompat.ProgressBar"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:progressTint="#E40B27"
+                                    android:visibility="visible"
+                                    tools:visibility="visible" />
+
+
+                        </FrameLayout>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Location Preference"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:fontFamily="@font/mon_bold"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginTop="25dp"/>
+
+                        <EditText
+                            android:id="@+id/loc"
+                            android:layout_width="350dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/gray_btn_back"
+                            android:hint="Cumilla"
+                            android:textSize="16dp"
+                            android:textColorHint="@color/black"
+                            android:layout_gravity="center"
+                            android:paddingLeft="10dp"
+                            android:fontFamily="@font/mon_regular"
+                            android:textColor="#000000"
+                            android:gravity="left|center_vertical"
+                            android:layout_marginTop="15dp"/>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Select Blood Group"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:fontFamily="@font/mon_bold"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginTop="30dp"/>
+
+
+
+
+                        <LinearLayout
+                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                                <Button
+                                    android:layout_marginBottom="8dp"
+                                    android:id="@+id/bldGroupIdApos"
+                                    android:layout_width="41dp"
+                                    android:layout_height="41dp"
+                                    android:background="@drawable/trns_back"
+                                    android:text="A+"
+
+                                    android:layout_marginStart="30dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textStyle="normal"
+                                    android:textSize="18sp"
+                                    android:textColor="#A2A2A2"
+                                    />
+                                <Button
+                                    android:id="@+id/bldGroupIdAmin"
+                                    android:layout_width="41dp"
+                                    android:layout_height="41dp"
+                                    android:textColor="#A2A2A2"
+                                    android:background="@drawable/trns_back"
+                                    android:text="A-"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textStyle="normal"
+                                    android:textSize="18sp"
+                                   />
+                                <Button
+                                    android:id="@+id/bldGroupIdBpos"
+                                    android:layout_width="41dp"
+                                    android:layout_height="41dp"
+                                    android:textColor="#A2A2A2"
+                                    android:background="@drawable/trns_back"
+                                    android:text="B+"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textStyle="normal"
+                                    android:textSize="18sp"
+                                    />
+                                <Button
+                                    android:id="@+id/bldGroupIdBmin"
+                                    android:layout_width="41dp"
+                                    android:layout_height="41dp"
+                                    android:textColor="#A2A2A2"
+                                    android:background="@drawable/trns_back"
+                                    android:text="B-"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textStyle="normal"
+                                    android:textSize="18sp"
+                                   />
+                                <Button
+                                    android:id="@+id/bldGroupIdOpos"
+                                    android:layout_width="41dp"
+                                    android:layout_height="41dp"
+                                    android:textColor="#A2A2A2"
+                                    android:background="@drawable/trns_back"
+                                    android:text="O+"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textStyle="normal"
+                                    android:textSize="18sp"
+
+                                    />
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+                                <Button
+                                    android:id="@+id/bldGroupIdOmin"
+                                    android:layout_width="41dp"
+                                    android:layout_height="41dp"
+                                    android:textColor="#A2A2A2"
+                                    android:background="@drawable/trns_back"
+                                    android:text="O-"
+                                    android:layout_marginStart="30dp"
+                                    android:layout_marginTop="5dp"
+                                    android:textStyle="normal"
+                                    android:textSize="18sp"
+                                   />
+
+                                <Button
+                                    android:id="@+id/bldGroupIdABpos"
+                                    android:layout_width="41dp"
+                                    android:layout_height="41dp"
+                                    android:textColor="#A2A2A2"
+                                    android:background="@drawable/trns_back"
+                                    android:text="AB+"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="5dp"
+                                    android:textStyle="normal"
+                                    android:textSize="18sp"
+                                   />
+                                <Button
+                                    android:id="@+id/bldGroupIdABmin"
+                                    android:layout_width="41dp"
+                                    android:layout_height="41dp"
+                                    android:textColor="#A2A2A2"
+                                    android:background="@drawable/trns_back"
+                                    android:text="AB-"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="5dp"
+                                    android:textStyle="normal"
+                                    android:textSize="18sp"
+                                    android:layout_marginBottom="8dp"
+                                    />
+
+
+                        </LinearLayout>
+
+
+                        <Button
+                            android:id="@+id/submitBtn"
+                            android:layout_width="240dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginBottom="100dp"
+                            android:background="@drawable/gradient_back"
+                            android:gravity="center"
+                            android:text="Submit"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:textColor="#ffffff"
+                            android:textStyle="bold" />
+
+                </LinearLayout>
+        </ScrollView>
 
 </LinearLayout>
 

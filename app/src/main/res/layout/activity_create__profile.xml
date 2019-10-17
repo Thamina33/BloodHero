@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".create_Profile">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.Toolbar
         android:elevation="8dp"
@@ -60,6 +66,60 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+
+        <ProgressBar
+            android:id="@+id/progresssbar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:progressTint="#E40B27"
+            android:visibility="visible"
+            />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show Us How U Look !! "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:layout_gravity="top"
+        android:gravity="left"
+        android:layout_marginLeft="25dp"
+        android:fontFamily="@font/mon_regular"
+        android:layout_marginTop="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+
+            android:id="@+id/profile_image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center"
+            android:src="@drawable/profile" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tell Us About U !! "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:layout_gravity="top"
+        android:gravity="left"
+        android:layout_marginLeft="25dp"
+        android:fontFamily="@font/mon_regular"
+        android:layout_marginTop="15dp"/>
+
     <EditText
         android:id="@+id/dName"
         android:layout_width="350dp"
@@ -67,7 +127,7 @@
         android:layout_gravity="center"
         android:gravity="left|center"
         android:paddingStart="25dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:layout_marginLeft="20dp"
         android:hint="Name"
         android:text=""
@@ -82,12 +142,12 @@
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:inputType="textEmailAddress"
+        android:inputType="phone"
         android:gravity="left|center"
         android:paddingStart="25dp"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="20dp"
-        android:hint="Email"
+        android:hint="Phone Number"
         android:text=""
         android:textColorHint="#a2a2a2"
         android:textColor="#000000"
@@ -181,21 +241,6 @@
 
 
     </LinearLayout>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-
-        <ProgressBar
-            android:id="@+id/progresssbar"
-            style="@style/Widget.AppCompat.ProgressBar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:progressTint="#E40B27"
-            android:visibility="visible"
-            tools:visibility="visible" />
-
-
-    </FrameLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -363,29 +408,30 @@ visible for other" />
 
 
 
-
-
     <LinearLayout
+
         android:layout_width="match_parent"
-        android:layout_gravity="bottom|center"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_height="match_parent">
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
         <Button
             android:id="@+id/submit"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_gravity="bottom|center"
-            android:gravity="center"
             android:layout_marginLeft="20dp"
-            android:text="DONE"
-            android:textColor="#FFFFFF"
-            android:fontFamily="@font/mon_bold"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/gradient_back_redious"/>
+            android:background="@drawable/gradient_back_redious"
+            android:fontFamily="@font/mon_bold"
+            android:gravity="center"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="DONE"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
-
-
 </LinearLayout>
+</ScrollView>

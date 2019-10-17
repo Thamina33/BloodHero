@@ -1,100 +1,62 @@
 package com.example.bloodhero;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+public class chooseBloodGroup extends AppCompatActivity {
 
-import android.app.Dialog;
-import android.content.Intent;
-import android.graphics.Color;
-
-import android.os.Build;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import de.hdodenhof.circleimageview.CircleImageView;
-
-public class create_Profile extends AppCompatActivity {
-
-    EditText dname, dEmail;
-    LinearLayout gmale, gfemale;
-    ImageView m_icon, f_icon;
-    TextView m_txt, f_txt;
-    Button apos, amin, bpos, bmin, abpos, abmin, opos, omin, submit;
-    CheckBox num_vgblity_prmisn;
-    String name, mail;
-    String bldGroup = "bloodGroup";
-    String gndr = "gender";
-    String numVisibility = "visible";
-    String Uid;
-    DatabaseReference mRef;
-    ProgressBar mbar;
-    FirebaseAuth mauth ;
-    String uid ;
-    CircleImageView imageView ;
+    Button apos , amin , bpos , bmin , opos , omin , abpos , abmin ;
+    String bldGroup = "bloodGroup" ;
+    Button submitBtn , backBtn ;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create__profile);
-
-        mRef = FirebaseDatabase.getInstance().getReference("getProfile");
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        setContentView(R.layout.activity_choose_blood_group);
+        getSupportActionBar().hide();
 
 
-        mauth = FirebaseAuth.getInstance();
-        uid = mauth.getUid() ;
-//        String email  = mauth.getCurrentUser().getEmail() ;
-
-        dname = findViewById(R.id.dName);
-        dEmail = findViewById(R.id.dEmail);
-        gmale = findViewById(R.id.gmale);
-        gfemale = findViewById(R.id.gfemale);
-        m_icon = findViewById(R.id.m_icon);
-        f_icon = findViewById(R.id.f_icon);
-        f_txt = findViewById(R.id.f_txt);
-        m_txt = findViewById(R.id.m_txt);
-        apos = findViewById(R.id.apos);
-        amin = findViewById(R.id.amin);
-        bmin = findViewById(R.id.bmin);
-        omin = findViewById(R.id.omin);
-        abmin = findViewById(R.id.abmin);
-        bpos = findViewById(R.id.bpos);
-        opos = findViewById(R.id.opos);
-        abpos = findViewById(R.id.abpos);
-        submit = findViewById(R.id.submit);
-        num_vgblity_prmisn = findViewById(R.id.num_vgblity_prmisn);
-        mbar = findViewById(R.id.progresssbar);
-        imageView = findViewById(R.id.profile_image) ;
-        mbar.setVisibility(View.GONE);
+        apos = findViewById(R.id.bldGroupIdApos);
+        amin = findViewById(R.id.bldGroupIdAmin);
+        bpos = findViewById(R.id.bldGroupIdBpos);
+         bmin = findViewById(R.id.bldGroupIdBmin);
+        omin = findViewById(R.id.bldGroupIdOmin);
+        opos = findViewById(R.id.bldGroupIdOpos);
+        abmin = findViewById(R.id.bldGroupIdABmin);
+        abpos = findViewById(R.id.bldGroupIdABpos);
+        submitBtn = findViewById(R.id.submitBtn);
+        backBtn =findViewById(R.id.backBtn);
 
 
-     //   dEmail.setText(email);
-        //selectinng blood
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent i = new Intent(getApplicationContext() ,allDonorList.class );
+                i.putExtra("BG", bldGroup);
+                startActivity(i);
+
+
+            }
+        });
+
 
         apos.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -362,139 +324,8 @@ public class create_Profile extends AppCompatActivity {
         });
 
 
-        //selecting gender
 
-        gmale.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                gndr = "Male";
-
-                m_icon.setBackground(getDrawable(R.drawable.pink_male));
-                m_txt.setTextColor(Color.parseColor("#FF245C"));
-
-
-                //set female color default
-
-                f_icon.setBackground(getDrawable(R.drawable.female));
-                f_txt.setTextColor(Color.parseColor("#a2a2a2"));
-
-            }
-        });
-
-        gfemale.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                gndr = "Female";
-
-                f_icon.setBackground(getDrawable(R.drawable.pink_female));
-                f_txt.setTextColor(Color.parseColor("#FF245C"));
-
-
-                //set female color default
-
-                m_icon.setBackground(getDrawable(R.drawable.male));
-                m_txt.setTextColor(Color.parseColor("#a2a2a2"));
-
-            }
-        });
-
-
-        num_vgblity_prmisn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (num_vgblity_prmisn.isChecked()) {
-                    numVisibility = "Yes";
-                } else {
-                    numVisibility = "No";
-                }
-            }
-        });
-
-
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                mbar.setVisibility(View.VISIBLE);
-                String Name = dname.getText().toString();
-                String Email = dEmail.getText().toString();
-
-
-                if (!TextUtils.isEmpty(Name) && !TextUtils.isEmpty(Email) && !bldGroup.contains("bloodGroup") && !gndr.contains("gender")) {
-
-
-                    uploadDataToFireBase(Name, Email, gndr, bldGroup, numVisibility);
-                    Toast.makeText(getApplicationContext(), Name + "" + Email + "" + bldGroup, Toast.LENGTH_SHORT)
-                            .show();
-
-                } else {
-                    Toast.makeText(getApplicationContext(), "Fill the Data Properly", Toast.LENGTH_SHORT)
-                            .show();
-                    mbar.setVisibility(View.GONE);
-
-                }
-
-
-            }
-        });
-
-    }
-
-    public void uploadDataToFireBase(String name, String email, String gndr, String bldGroup, String numVisibility) {
-
-        String id = mRef.push().getKey();
-
-        getProfile model = new getProfile(id, uid, name, email, gndr, bldGroup, numVisibility , "TRUE" , null);
-
-        mRef.child(uid).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-                mbar.setVisibility(View.INVISIBLE);
-
-                Intent intent = new Intent(create_Profile.this,HomePage.class);
-                startActivity(intent);
-             //   OpenDialogue();
-
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(), "Error :" + e.getMessage(), Toast.LENGTH_SHORT)
-                        .show();
-                mbar.setVisibility(View.GONE);
-            }
-        });
-    }
-
-
-    private void OpenDialogue() {
-
-        final Dialog dialog = new Dialog(create_Profile.this);
-        dialog.setContentView(R.layout.done_dialogue_in_profile);
-
-        Button okBtn = dialog.findViewById(R.id.okBtn);
-
-
-        dialog.setCancelable(false);
-
-        dialog.show();
-
-
-        okBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                dialog.dismiss();
-                finish();
-            }
-        });
 
 
     }
-
-
 }
-
-

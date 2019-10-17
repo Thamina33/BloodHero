@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".allDonorList"></activity>
+        <activity android:name=".splashScreen"></activity>
+        <activity android:name=".allDonorList" />
         <activity android:name=".HomePage" />
         <activity android:name=".Profile" />
-        <activity android:name=".create_Profile" />
+        <activity android:name=".create_Profile"></activity>
         <activity android:name=".PhoneVerification" />
         <activity android:name=".LogInPage">
             <intent-filter>
