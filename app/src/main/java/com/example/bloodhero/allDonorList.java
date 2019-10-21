@@ -42,7 +42,7 @@ public class allDonorList extends AppCompatActivity {
 
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("getProfile");
+        mRef = mFirebaseDatabase.getReference("DonorInformation");
         backbtn = findViewById(R.id.BACKBTN);
         mRef.keepSynced(true);
 
@@ -74,7 +74,7 @@ public class allDonorList extends AppCompatActivity {
     private  void showData(){
 
 
-        Query query = mRef.orderByChild("user_bloodgroup").startAt(searchText).endAt(searchText + "\uf8ff") ;
+        Query query = mRef.orderByChild("bloodgroup").startAt(searchText).endAt(searchText + "\uf8ff") ;
 
         options = new FirebaseRecyclerOptions.Builder<getProfile>().setQuery(query , getProfile.class)
                 .build() ;

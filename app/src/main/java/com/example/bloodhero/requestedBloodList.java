@@ -41,7 +41,7 @@ public class requestedBloodList extends AppCompatActivity {
 
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("BloodReq");
+        mRef = mFirebaseDatabase.getReference("bloodReqRepo");
 
         mRef.keepSynced(true);
 

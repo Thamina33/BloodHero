@@ -59,7 +59,7 @@ public class create_Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create__profile);
 
-        mRef = FirebaseDatabase.getInstance().getReference("getProfile");
+        mRef = FirebaseDatabase.getInstance().getReference("DonorInformation");
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -454,6 +454,7 @@ public class create_Profile extends AppCompatActivity {
 
                 Intent intent = new Intent(create_Profile.this,HomePage.class);
                 startActivity(intent);
+                finish();
              //   OpenDialogue();
 
 

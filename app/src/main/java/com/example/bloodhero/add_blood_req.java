@@ -24,30 +24,32 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
 public class add_blood_req extends AppCompatActivity {
-    TextView datePicker  , timePicker ;
-    DatePickerDialog datePickerDialog ;
-    String amPmChecker  , date  ="null", time ="null", Loc  ;
+    TextView datePicker, timePicker;
+    DatePickerDialog datePickerDialog;
+    String amPmChecker, date = "null", time = "null", Loc;
 
-    Button apos ,amin , bpos , bmin , opos , omin , abpos , abmin  , backBtn;
-    String bldGroup = "bloodGroup" ;
-    Button submitBtn ;
-    EditText needer   ,  loc  ;
-    String  ph =  "nan" ;
+    Button apos, amin, bpos, bmin, opos, omin, abpos, abmin, backBtn;
+    String bldGroup = "bloodGroup";
+    Button submitBtn;
+    EditText needer, loc;
+    String ph = "nan";
     String pp = " ";
 
-    DatabaseReference mRef ;
-    ProgressBar mbar ;
+    DatabaseReference mRef;
+    ProgressBar mbar;
 
-    String uid ;
+    String uid;
 
 
     @Override
@@ -55,7 +57,7 @@ public class add_blood_req extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_blood_req);
         mRef = FirebaseDatabase.getInstance().getReference("bloodReqRepo");
-        apos = findViewById(R.id.apos);
+        apos = findViewById(R.id.bldGroupIdApos);
         amin = findViewById(R.id.bldGroupIdAmin);
         bpos = findViewById(R.id.bldGroupIdBpos);
         bmin = findViewById(R.id.bldGroupIdBmin);
@@ -350,8 +352,6 @@ public class add_blood_req extends AppCompatActivity {
         //<-----------------
 
 
-
-
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -362,29 +362,26 @@ public class add_blood_req extends AppCompatActivity {
                 String LOc = loc.getText().toString();
 
 
-                if(!TextUtils.isEmpty(Name) && !TextUtils.isEmpty(LOc)&& !bldGroup.contains("bloodGroup")
-                ){
+                if (!TextUtils.isEmpty(Name) && !TextUtils.isEmpty(LOc) && !bldGroup.contains("bloodGroup")
+                ) {
 
 
-                    uploadDataToFireBase(Name , LOc   , ph , time , date );
+                    uploadDataToFireBase(Name, LOc, ph, time, date);
 
                     //   OpenDialogue();
 
-                    Toast.makeText(getApplicationContext() , Name + "" + LOc , Toast.LENGTH_SHORT )
+                    Toast.makeText(getApplicationContext(), Name + "" + LOc, Toast.LENGTH_SHORT)
                             .show();
 
-                }
-                else {
-                    Toast.makeText(getApplicationContext() , "Fill the Data Properly" , Toast.LENGTH_SHORT)
+                } else {
+                    Toast.makeText(getApplicationContext(), "Fill the Data Properly", Toast.LENGTH_SHORT)
                             .show();
                     mbar.setVisibility(View.GONE);
                 }
 
 
-
             }
         });
-
 
 
         datePicker.setOnClickListener(new View.OnClickListener() {
@@ -403,18 +400,16 @@ public class add_blood_req extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-                        datePicker.setText(dayOfMonth + "/"+(month+1)+"/"+year);
-                        date = dayOfMonth + "/"+(month+1)+"/"+year ;
-
+                        datePicker.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                        date = dayOfMonth + "/" + (month + 1) + "/" + year;
 
 
                     }
-                } ,year , month , day);
+                }, year, month, day);
 
                 datePickerDialog.show();
             }
         });
-
 
 
         timePicker.setOnClickListener(new View.OnClickListener() {
@@ -423,40 +418,40 @@ public class add_blood_req extends AppCompatActivity {
 
                 //calling the time picker
 
-                TimePickerDialog timePickerDialog  = new TimePickerDialog(add_blood_req.this, new TimePickerDialog.OnTimeSetListener() {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(add_blood_req.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
-                        if (hourOfDay >= 12){
+                        if (hourOfDay >= 12) {
                             amPmChecker = "AM";
 
+                        } else {
+                            amPmChecker = "PM";
                         }
-                        else  {
-                            amPmChecker= "PM";
-                        }
 
 
-                        timePicker.setText(hourOfDay+":"+minute+" "+amPmChecker);
+                        timePicker.setText(hourOfDay + ":" + minute + " " + amPmChecker);
 
-                        time = hourOfDay+":"+minute+" "+amPmChecker ;
+                        time = hourOfDay + ":" + minute + " " + amPmChecker;
 
                     }
-                }, 0,0, false);
+                }, 0, 0, false);
 
 
                 timePickerDialog.show();
             }
         });
 
+
     }
 
     private void uploadDataToFireBase(String name, String lOc, String ph, String time, String date) {
 
-        String id  = mRef.push().getKey();
+        String id = mRef.push().getKey();
 
         /// String postID , uid , needer  , loc , timee , datee , bg ;
 
-        modelForBloodReq model = new modelForBloodReq(id  , uid , name , lOc  , time , date   , bldGroup, ph  , pp  ) ;
+        modelForBloodReq model = new modelForBloodReq(id, uid, name, lOc, time, date, bldGroup, ph, pp);
 
         mRef.child(id).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -467,7 +462,6 @@ public class add_blood_req extends AppCompatActivity {
                 OpenDialogue();
 
 
-
             }
         })
                 .addOnFailureListener(new OnFailureListener() {
@@ -475,7 +469,7 @@ public class add_blood_req extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
 
 
-                        Toast.makeText(getApplicationContext() , "Error :"+ e.getMessage() , Toast.LENGTH_SHORT)
+                        Toast.makeText(getApplicationContext(), "Error :" + e.getMessage(), Toast.LENGTH_SHORT)
                                 .show();
                         mbar.setVisibility(View.GONE);
                     }
@@ -484,10 +478,10 @@ public class add_blood_req extends AppCompatActivity {
 
     private void OpenDialogue() {
 
-        final Dialog dialog  = new Dialog(add_blood_req.this);
-        dialog.setContentView(R.layout.done_dialogue_in_blood) ;
+        final Dialog dialog = new Dialog(add_blood_req.this);
+        dialog.setContentView(R.layout.done_dialogue_in_blood);
 
-        Button okBtn = dialog.findViewById(R.id.okBtn) ;
+        Button okBtn = dialog.findViewById(R.id.okBtn);
 
 
         dialog.setCancelable(false);
@@ -505,17 +499,16 @@ public class add_blood_req extends AppCompatActivity {
         });
 
 
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseAuth mauth  = FirebaseAuth.getInstance();
-        uid = mauth.getUid() ;
+        FirebaseAuth mauth = FirebaseAuth.getInstance();
+        uid = mauth.getUid();
 
 
-        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("Users").child(uid);
+        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("DonorInformation").child(uid);
 
         mref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -524,9 +517,7 @@ public class add_blood_req extends AppCompatActivity {
                 getProfile model = dataSnapshot.getValue(getProfile.class);
 
                 ph = model.getMail();
-                pp = model.getUser_pp() ;
-
-
+                pp = model.getUser_pp();
 
 
             }
@@ -540,3 +531,6 @@ public class add_blood_req extends AppCompatActivity {
 
     }
 }
+
+
+

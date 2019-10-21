@@ -106,7 +106,7 @@ if(TextUtils.isEmpty(uid))
     uid = "test" ;
 }
 
-        DatabaseReference checkRef = FirebaseDatabase.getInstance().getReference("getProfile").child(uid);
+        DatabaseReference checkRef = FirebaseDatabase.getInstance().getReference("DonorInformation").child(uid);
 
         checkRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -116,12 +116,14 @@ if(TextUtils.isEmpty(uid))
 
                     Intent intent = new Intent(LogInPage.this,HomePage.class);
                     startActivity(intent);
+                    finish();
 
                 }
                 else {
 
                     Intent intent = new Intent(LogInPage.this,create_Profile.class);
                     startActivity(intent);
+                    finish();
 
                 }
 
@@ -143,10 +145,12 @@ if(TextUtils.isEmpty(uid))
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
 
-                            Intent i = new Intent(getApplicationContext(), create_Profile.class);
+                          //  Intent i = new Intent(getApplicationContext(), create_Profile.class);
                            // i.putExtra("GOOGLE" , "GOOGLE");
-                            startActivity(i);
-                            finish();
+                         //   startActivity(i);
+                         //   finish();
+
+                            check();
                         }
 
                         else{
