@@ -17,16 +17,18 @@
         <activity android:name=".allDonorList" />
         <activity android:name=".HomePage" />
         <activity android:name=".Profile" />
-        <activity android:name=".create_Profile"></activity>
-        <activity android:name=".PhoneVerification" />
-        <activity android:name=".chooseBloodGroup"/>
-        <activity android:name=".myReq"/>
-        <activity android:name=".LogInPage">
+        <activity android:name=".create_Profile">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".PhoneVerification" />
+        <activity android:name=".chooseBloodGroup"/>
+        <activity android:name=".myReq"/>
+        <activity android:name=".LogInPage">
+
         </activity>
 
         <activity
