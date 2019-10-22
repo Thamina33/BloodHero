@@ -34,7 +34,7 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-core:17.2.0'
     implementation 'com.google.firebase:firebase-auth:19.1.0'
-    implementation 'com.google.firebase:firebase-database:19.1.0'
+    implementation 'com.google.firebase:firebase-database:19.2.0'
     implementation 'com.google.firebase:firebase-storage:19.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.firebaseui:firebase-ui-database:5.1.0'
@@ -54,5 +54,15 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.0.1'
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
     implementation 'com.airbnb.android:lottie:3.0.7'
+
+    //cropper library
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
+
+    //compress library
+    implementation 'id.zelory:compressor:2.1.0'
+
+    // image loader
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 
 }
