@@ -29,6 +29,9 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -40,8 +43,8 @@ public class Profile extends AppCompatActivity {
 
         image = findViewById(R.id.image);
         name = findViewById(R.id.name);
-        email=findViewById(R.id.email);
-        id=findViewById(R.id.id);
+        email=findViewById(R.id.mail);
+        id=findViewById(R.id.ph);
         signout = findViewById(R.id.signout);
 
         signout.setOnClickListener(new View.OnClickListener() {

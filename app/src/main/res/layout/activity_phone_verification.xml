@@ -8,12 +8,46 @@
     android:background="#fff"
     tools:context=".PhoneVerification">
 
-    <ImageView
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:background="#ffff"
         android:layout_height="wrap_content"
-        android:background="@drawable/arrow_back_pink"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"/>
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/BACKBTN"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/backword_sign"
+
+                    android:layout_marginTop="5dp"
+                    android:textStyle="normal"
+                    android:textSize="18sp"
+                    android:textColor="#D0CECE"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <TextView
         android:layout_width="match_parent"

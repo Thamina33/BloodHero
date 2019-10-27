@@ -36,7 +36,10 @@ public class HomePage extends AppCompatActivity {
 
 
 
-        getSupportActionBar().hide();
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         mauth = FirebaseAuth.getInstance();
         uid = mauth.getUid();
 

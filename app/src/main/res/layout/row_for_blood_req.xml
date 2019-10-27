@@ -14,8 +14,8 @@
             android:layout_height="wrap_content">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:id="@+id/rowImageReqBlood"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="10dp"
@@ -27,7 +27,7 @@
                 android:id="@+id/rowNameReqBlood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_toEndOf="@id/rowImageReqBlood"
                 android:text="Mr.XYZ"
@@ -38,7 +38,7 @@
                 android:id="@+id/rowLocationReqBlood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="29dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="40dp"
                 android:layout_toEndOf="@id/rowImageReqBlood"
                 android:drawableStart="@drawable/ic_add_location_gray"
@@ -53,7 +53,7 @@
                 android:id="@+id/rowTimeReqBlood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="31dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="57dp"
                 android:layout_toEndOf="@id/rowImageReqBlood"
                 android:drawablePadding="5dp"
@@ -75,14 +75,14 @@
                 android:background="@drawable/trns_back_rect"
                 android:gravity="center"
                 android:hint="0170000000"
-                android:textColorHint="#ff245c"
+                android:textColorHint="#00652E"
                 android:textSize="16sp"
 
                 />
 
             <Button
                 android:id="@+id/request"
-                android:layout_width="112dp"
+                android:layout_width="120dp"
                 android:layout_height="25dp"
                 android:layout_marginStart="185dp"
                 android:layout_marginEnd="0dp"
@@ -99,13 +99,13 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignTop="@id/request"
-                android:layout_marginStart="218dp"
+                android:layout_marginStart="220dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="10dp"
                 android:layout_toEndOf="@id/rowImageReqBlood"
                 android:background="@drawable/trns_back"
                 android:text="A+"
-                android:textColor="#ff245c"
+                android:textColor="#00652E"
                 android:textSize="18sp"
                 android:textStyle="normal" />
         </RelativeLayout>

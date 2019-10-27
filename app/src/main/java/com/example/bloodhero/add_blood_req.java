@@ -57,6 +57,11 @@ public class add_blood_req extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_blood_req);
         mRef = FirebaseDatabase.getInstance().getReference("bloodReqRepo");
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         apos = findViewById(R.id.bldGroupIdApos);
         amin = findViewById(R.id.bldGroupIdAmin);
         bpos = findViewById(R.id.bldGroupIdBpos);
@@ -91,7 +96,7 @@ public class add_blood_req extends AppCompatActivity {
                 bldGroup = "A+";
 
                 apos.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                apos.setTextColor(Color.parseColor("#FF245C"));
+                apos.setTextColor(Color.parseColor("#FFF"));
 
 
                 //set all other button color  default
@@ -124,7 +129,7 @@ public class add_blood_req extends AppCompatActivity {
                 bldGroup = "A-";
 
                 amin.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                amin.setTextColor(Color.parseColor("#FF245C"));
+                amin.setTextColor(Color.parseColor("#FFF"));
 
 
                 //set all other button color  default
@@ -158,7 +163,7 @@ public class add_blood_req extends AppCompatActivity {
                 bldGroup = "B+";
 
                 bpos.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                bpos.setTextColor(Color.parseColor("#FF245C"));
+                bpos.setTextColor(Color.parseColor("#FFF"));
 
 
                 //set all other button color  default
@@ -191,7 +196,7 @@ public class add_blood_req extends AppCompatActivity {
                 bldGroup = "B-";
 
                 bmin.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                bmin.setTextColor(Color.parseColor("#FF245C"));
+                bmin.setTextColor(Color.parseColor("#FFF"));
 
 
                 //set all other button color  default
@@ -225,7 +230,7 @@ public class add_blood_req extends AppCompatActivity {
                 bldGroup = "O+";
 
                 opos.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                opos.setTextColor(Color.parseColor("#FF245C"));
+                opos.setTextColor(Color.parseColor("#FFF"));
 
 
                 //set all other button color  default
@@ -258,7 +263,7 @@ public class add_blood_req extends AppCompatActivity {
                 bldGroup = "O-";
 
                 omin.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                omin.setTextColor(Color.parseColor("#FF245C"));
+                omin.setTextColor(Color.parseColor("#FFF"));
 
 
                 //set all other button color  default
@@ -291,7 +296,7 @@ public class add_blood_req extends AppCompatActivity {
                 bldGroup = "AB+";
 
                 abpos.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                abpos.setTextColor(Color.parseColor("#FF245C"));
+                abpos.setTextColor(Color.parseColor("#FFF"));
 
 
                 //set all other button color  default
@@ -323,7 +328,7 @@ public class add_blood_req extends AppCompatActivity {
                 bldGroup = "AB-";
 
                 abmin.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                abmin.setTextColor(Color.parseColor("#FF245C"));
+                abmin.setTextColor(Color.parseColor("#FFF"));
 
 
                 //set all other button color  default

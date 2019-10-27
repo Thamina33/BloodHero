@@ -5,42 +5,157 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_gravity="center"
-    android:gravity="center"
     tools:context=".Profile">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:background="#ffff"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/BACKBTN"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/backword_sign"
+
+                    android:layout_marginTop="5dp"
+                    android:textStyle="normal"
+                    android:textSize="18sp"
+                    android:textColor="#D0CECE"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <ImageView
         android:id="@+id/pic"
         android:layout_width="100dp"
+        android:layout_marginTop="40dp"
         android:layout_height="100dp"
+        android:layout_gravity="center"
         app:srcCompat="@drawable/pink_male" />
 
     <TextView
         android:id="@+id/name"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:textColor="#000"
-        android:text="fdsf" />
 
-    <TextView
-        android:id="@+id/email"
-        android:textSize="18sp"
         android:textColor="#000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/id"
-        android:textSize="18sp"
-        android:textColor="#000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="Mr.XXX" />
 
-    <Button
-        android:id="@+id/signout"
+
+    <LinearLayout
+
+        android:orientation="horizontal"
+        android:layout_marginTop="150dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="signout" />
+        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:src="@drawable/gmail"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="bfdfgf@gmail.com"
+            android:textColor="#000000"
+            android:paddingLeft="7dp"
+            android:textSize="17dp"
+            android:id="@+id/mail"
+            android:layout_gravity="center_vertical"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:src="@drawable/phone"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01000000"
+            android:textColor="#000000"
+            android:paddingLeft="7dp"
+            android:textSize="17dp"
+            android:id="@+id/ph"
+            android:layout_gravity="center_vertical"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:src="@drawable/blood64"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B+"
+            android:textColor="#000000"
+            android:paddingLeft="7dp"
+            android:textSize="17dp"
+            android:id="@+id/blood_profile"
+            android:layout_gravity="center_vertical"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom|center"
+        android:gravity="bottom|center">
+        <Button
+            android:id="@+id/signout"
+            android:layout_width="match_parent"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="bottom|center"
+           android:layout_marginBottom="30dp"
+            android:layout_height="wrap_content"
+            android:text="Yes, I donate blood today " />
+
+    </LinearLayout>
+
+
 </LinearLayout>

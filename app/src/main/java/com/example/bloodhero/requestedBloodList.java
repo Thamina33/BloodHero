@@ -37,6 +37,9 @@ public class requestedBloodList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requested_blood_list);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
 
         //send Query to FirebaseDatabase
