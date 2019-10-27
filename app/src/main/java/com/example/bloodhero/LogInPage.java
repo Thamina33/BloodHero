@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +54,7 @@ public class LogInPage extends AppCompatActivity {
     FirebaseAuth.AuthStateListener mAuthListener ;
     SignInButton google_btn ;
 
+    RelativeLayout relativeLayout ;
 
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mcallbacks ;
     Button signInBtn ;
@@ -68,11 +70,14 @@ public class LogInPage extends AppCompatActivity {
         setContentView(R.layout.activity_log_in_page);
 
         signin = findViewById(R.id.sign_in_button);
+        relativeLayout = findViewById(R.id.loadingPanel);
+        relativeLayout.setVisibility(View.GONE);
 
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                relativeLayout.setVisibility(View.VISIBLE);
                 switch (v.getId()) {
                     case R.id.sign_in_button:
                         signIn();
@@ -119,13 +124,14 @@ if(TextUtils.isEmpty(uid))
                 if(dataSnapshot.exists())
                 {
 
+                    relativeLayout.setVisibility(View.GONE);
                     Intent intent = new Intent(LogInPage.this,HomePage.class);
                     startActivity(intent);
                     finish();
 
                 }
                 else {
-
+                    relativeLayout.setVisibility(View.GONE);
                     Intent intent = new Intent(LogInPage.this,create_Profile.class);
                     startActivity(intent);
                     finish();
@@ -136,7 +142,7 @@ if(TextUtils.isEmpty(uid))
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                relativeLayout.setVisibility(View.GONE);
             }
         });
 

@@ -11,23 +11,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".requestedBloodList"></activity>
-        <activity android:name=".splashScreen"></activity>
-        <activity android:name=".add_blood_req"></activity>
-        <activity android:name=".allDonorList" />
-        <activity android:name=".HomePage" />
-        <activity android:name=".Profile" />
-        <activity android:name=".create_Profile"></activity>
-        <activity android:name=".PhoneVerification" />
-        <activity android:name=".chooseBloodGroup"/>
-        <activity android:name=".myReq"/>
-        <activity android:name=".LogInPage">
+        <activity android:name=".splashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity android:name=".requestedBloodList" />
+        <activity android:name=".splashScreen" />
+        <activity android:name=".add_blood_req" />
+        <activity android:name=".allDonorList" />
+        <activity android:name=".HomePage" >
+
+        </activity>
+        <activity android:name=".Profile" />
+        <activity android:name=".create_Profile" >
+
+
+        </activity>
+        <activity android:name=".PhoneVerification" />
+        <activity android:name=".chooseBloodGroup" />
+        <activity android:name=".myReq" />
+        <activity android:name=".LogInPage">
+
+        </activity>
+
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/>
     </application>
 
 </manifest>

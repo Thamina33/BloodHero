@@ -27,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -73,6 +74,7 @@ public class create_Profile extends AppCompatActivity {
     StorageReference mStorageReference ;
     String uid ;
     CircleImageView imageView ;
+    RelativeLayout  loader ;
 
 
 
@@ -91,7 +93,7 @@ public class create_Profile extends AppCompatActivity {
         mauth = FirebaseAuth.getInstance();
         uid = mauth.getUid() ;
 //        String email  = mauth.getCurrentUser().getEmail() ;
-
+        loader = findViewById(R.id.loadingPanel) ;
         dname = findViewById(R.id.dName);
         dEmail = findViewById(R.id.dEmail);
         gmale = findViewById(R.id.gmale);
@@ -115,6 +117,7 @@ public class create_Profile extends AppCompatActivity {
         mbar.setVisibility(View.GONE);
 
 
+        loader.setVisibility(View.GONE);
      //   dEmail.setText(email);
         //selectinng blood
 
@@ -126,7 +129,7 @@ public class create_Profile extends AppCompatActivity {
                 bldGroup = "A+";
 
                 apos.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                apos.setTextColor(Color.parseColor("#FFF"));
+                apos.setTextColor(Color.parseColor("#FFFFFF"));
 
 
                 //set all other button color  default
@@ -159,7 +162,7 @@ public class create_Profile extends AppCompatActivity {
                 bldGroup = "A-";
 
                 amin.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                amin.setTextColor(Color.parseColor("#FFF"));
+                amin.setTextColor(Color.parseColor("#FFFFFF"));
 
 
                 //set all other button color  default
@@ -193,7 +196,7 @@ public class create_Profile extends AppCompatActivity {
                 bldGroup = "B+";
 
                 bpos.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                bpos.setTextColor(Color.parseColor("#FFF"));
+                bpos.setTextColor(Color.parseColor("#FFFFFF"));
 
 
                 //set all other button color  default
@@ -226,7 +229,7 @@ public class create_Profile extends AppCompatActivity {
                 bldGroup = "B-";
 
                 bmin.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                bmin.setTextColor(Color.parseColor("#FFF"));
+                bmin.setTextColor(Color.parseColor("#FFFFFF"));
 
                 //set all other button color  default
 
@@ -259,7 +262,7 @@ public class create_Profile extends AppCompatActivity {
                 bldGroup = "O+";
 
                 opos.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                opos.setTextColor(Color.parseColor("#FFF"));
+                opos.setTextColor(Color.parseColor("#FFFFFF"));
 
 
                 //set all other button color  default
@@ -292,7 +295,7 @@ public class create_Profile extends AppCompatActivity {
                 bldGroup = "O-";
 
                 omin.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                omin.setTextColor(Color.parseColor("#FFF"));
+                omin.setTextColor(Color.parseColor("#FFFFFF"));
 
 
                 //set all other button color  default
@@ -325,7 +328,7 @@ public class create_Profile extends AppCompatActivity {
                 bldGroup = "AB+";
 
                 abpos.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                abpos.setTextColor(Color.parseColor("#FFF"));
+                abpos.setTextColor(Color.parseColor("#FFFFFF"));
 
 
                 //set all other button color  default
@@ -357,7 +360,7 @@ public class create_Profile extends AppCompatActivity {
                 bldGroup = "AB-";
 
                 abmin.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                abmin.setTextColor(Color.parseColor("#FFF"));
+                abmin.setTextColor(Color.parseColor("#FFFFFF"));
 
 
                 //set all other button color  default
@@ -391,7 +394,7 @@ public class create_Profile extends AppCompatActivity {
                 gndr = "Male";
 
                 m_icon.setBackground(getDrawable(R.drawable.pink_male));
-                m_txt.setTextColor(Color.parseColor("#FF245C"));
+                m_txt.setTextColor(Color.parseColor("#00652e"));
 
 
                 //set female color default
@@ -408,7 +411,7 @@ public class create_Profile extends AppCompatActivity {
                 gndr = "Female";
 
                 f_icon.setBackground(getDrawable(R.drawable.pink_female));
-                f_txt.setTextColor(Color.parseColor("#FF245C"));
+                f_txt.setTextColor(Color.parseColor("#00652e"));
 
 
                 //set female color default
@@ -564,7 +567,7 @@ public class create_Profile extends AppCompatActivity {
 
                    // viewDialog.hideDialog();
 
-                    sentToHome();
+
                   //  viewDialog.hideDialog();
 
                     Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
@@ -581,7 +584,23 @@ public class create_Profile extends AppCompatActivity {
                     //   String imageUploadid = mDatabaseReference.push().getKey() ;
 
                     //adding imge upload
-                    mRef.child(uid).setValue(model);
+                    mRef.child(uid).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            loader.setVisibility(View.GONE);
+                            sentToHome();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                            loader.setVisibility(View.GONE);
+
+                        }
+                    })
+                    ;
+
 
 
                 }
@@ -590,6 +609,7 @@ public class create_Profile extends AppCompatActivity {
                 public void onFailure(@NonNull Exception e) {
                     // hide progrees bar
                     mbar.setVisibility(View.INVISIBLE);
+                    loader.setVisibility(View.GONE);
                     //  mprogressDialog.dismiss();
                     Toast.makeText(getApplicationContext(), e.getMessage(),Toast.LENGTH_LONG).show();
                 }
@@ -598,6 +618,7 @@ public class create_Profile extends AppCompatActivity {
                 public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                  //   viewDialog.showDialog();
                     mbar.setVisibility(View.VISIBLE);
+                    loader.setVisibility(View.VISIBLE);
 
                     //      mprogressDialog.setTitle(" Uploading ...........");
                 }

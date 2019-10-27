@@ -69,7 +69,7 @@ public class chooseBloodGroup extends AppCompatActivity {
                 bldGroup = "A+";
 
                 apos.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                apos.setTextColor(Color.parseColor("#FFF"));
+                apos.setTextColor(Color.parseColor("#FFFFFF"));
 
 
                 //set all other button color  default
@@ -102,7 +102,7 @@ public class chooseBloodGroup extends AppCompatActivity {
                 bldGroup = "A-";
 
                 amin.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                amin.setTextColor(Color.parseColor("#FFF"));
+                amin.setTextColor(Color.parseColor("#FFFFFF"));
 
 
                 //set all other button color  default
@@ -136,7 +136,7 @@ public class chooseBloodGroup extends AppCompatActivity {
                 bldGroup = "B+";
 
                 bpos.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                bpos.setTextColor(Color.parseColor("#FFF"));
+                bpos.setTextColor(Color.parseColor("#FFFFFF"));
 
 
                 //set all other button color  default
@@ -169,7 +169,7 @@ public class chooseBloodGroup extends AppCompatActivity {
                 bldGroup = "B-";
 
                 bmin.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                bmin.setTextColor(Color.parseColor("#FFF"));
+                bmin.setTextColor(Color.parseColor("#FFFFFF"));
 
 
                 //set all other button color  default
@@ -203,7 +203,7 @@ public class chooseBloodGroup extends AppCompatActivity {
                 bldGroup = "O+";
 
                 opos.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                opos.setTextColor(Color.parseColor("#FFF"));
+                opos.setTextColor(Color.parseColor("#FFFFFF"));
 
 
                 //set all other button color  default
@@ -236,7 +236,7 @@ public class chooseBloodGroup extends AppCompatActivity {
                 bldGroup = "O-";
 
                 omin.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                omin.setTextColor(Color.parseColor("#FFF"));
+                omin.setTextColor(Color.parseColor("#FFFFFF"));
 
 
                 //set all other button color  default
@@ -269,7 +269,7 @@ public class chooseBloodGroup extends AppCompatActivity {
                 bldGroup = "AB+";
 
                 abpos.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                abpos.setTextColor(Color.parseColor("#FFF"));
+                abpos.setTextColor(Color.parseColor("#FFFFFF"));
 
 
                 //set all other button color  default
@@ -301,7 +301,7 @@ public class chooseBloodGroup extends AppCompatActivity {
                 bldGroup = "AB-";
 
                 abmin.setBackground(getDrawable(R.drawable.white_btn_pink_border));
-                abmin.setTextColor(Color.parseColor("#FFF"));
+                abmin.setTextColor(Color.parseColor("#FFFFFF"));
 
 
                 //set all other button color  default

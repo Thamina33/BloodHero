@@ -146,6 +146,7 @@
         android:layout_gravity="bottom|center"
         android:gravity="bottom|center">
         <Button
+            android:visibility="gone"
             android:id="@+id/signout"
             android:layout_width="match_parent"
             android:layout_marginRight="20dp"

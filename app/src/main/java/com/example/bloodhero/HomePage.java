@@ -64,7 +64,9 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                i = new Intent(getApplicationContext() ,add_blood_req.class );
+
+
+                i = new Intent(getApplicationContext() ,LogInPage.class );
                 startActivity(i);
             }
         });
