@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#FFFFFF"
     tools:context=".Profile">
     <com.google.android.material.appbar.MaterialToolbar
         android:layout_width="match_parent"
-        android:background="#ffff"
+        android:background="#FFFFFF"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark">
         <LinearLayout
@@ -77,9 +78,23 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="35dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/gmail"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="#4CAF50"
+                android:paddingLeft="7dp"
+                android:textSize="14dp"
+                android:layout_gravity="center_vertical"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -89,6 +104,7 @@
             android:textSize="17dp"
             android:id="@+id/mail"
             android:layout_gravity="center_vertical"/>
+        </LinearLayout>
 
 
     </LinearLayout>
@@ -97,12 +113,26 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="35dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/phone"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone"
+                android:textColor="#4CAF50"
+                android:paddingLeft="7dp"
+                android:textSize="14dp"
+                android:layout_gravity="center_vertical"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -112,7 +142,7 @@
             android:textSize="17dp"
             android:id="@+id/ph"
             android:layout_gravity="center_vertical"/>
-
+        </LinearLayout>
 
     </LinearLayout>
     <LinearLayout
@@ -120,12 +150,26 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="35dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/blood64"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BloodGroup"
+                android:textColor="#4CAF50"
+                android:paddingLeft="7dp"
+                android:textSize="14dp"
+                android:layout_gravity="center_vertical"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -135,7 +179,7 @@
             android:textSize="17dp"
             android:id="@+id/blood_profile"
             android:layout_gravity="center_vertical"/>
-
+    </LinearLayout>
 
     </LinearLayout>
 
@@ -143,18 +187,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="bottom|center"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="0dp"
         android:gravity="bottom|center">
+
         <Button
-            android:visibility="gone"
             android:id="@+id/signout"
             android:layout_width="match_parent"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_gravity="bottom|center"
-           android:layout_marginBottom="30dp"
             android:layout_height="wrap_content"
-            android:text="Yes, I donate blood today " />
+            android:layout_gravity="bottom|center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="30dp"
+            android:text="Yes, I donate blood today "
+            android:visibility="gone" />
 
     </LinearLayout>
 
