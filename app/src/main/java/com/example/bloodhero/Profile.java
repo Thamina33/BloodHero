@@ -11,19 +11,30 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Profile extends AppCompatActivity {
 
-    ImageView image;
-    TextView name,email,id;
-    Button signout;
-    GoogleSignInClient  mGoogleSignInClient;
+    CircleImageView profilee     ;
+    TextView name, ph , bg ,  id;
+
+    Button back;
+    GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,61 +44,50 @@ public class Profile extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
+        name = findViewById( R.id.name) ;
+        ph = findViewById(R.id.ph) ;
+        back = findViewById(R.id.BACKBTN);
+        bg = findViewById(R.id.blood_profile) ;
+        profilee = findViewById(R.id.pic) ;
+        String uid = FirebaseAuth.getInstance().getUid() ;
 
-        // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
-        image = findViewById(R.id.image);
-        name = findViewById(R.id.name);
-        email=findViewById(R.id.mail);
-        id=findViewById(R.id.ph);
-        signout = findViewById(R.id.signout);
+        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("DonorInformation").child(uid);
 
-        signout.setOnClickListener(new View.OnClickListener() {
+
+
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
 
-                switch (v.getId()) {
-                    // ...
-                    case R.id.signout:
-                        signOut();
-                        break;
-                    // ...
-                }
+                finish();
 
+            }
+        });
+        mref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+                getProfile profile = dataSnapshot.getValue(getProfile.class);
+
+                bg.setText(profile.getBloodgroup());
+                name.setText(profile.getName());
+                ph.setText(profile.getMail());
+                Glide.with(getApplicationContext()) .load(profile.getUser_pp()).diskCacheStrategy(DiskCacheStrategy.ALL).into(profilee) ;
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
 
 
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-        if (acct != null) {
-            String personName = acct.getDisplayName();
-            String personEmail = acct.getEmail();
-            String personId = acct.getId();
-            Uri personPhoto = acct.getPhotoUrl();
-
-            name.setText(personName);
-            email.setText(personEmail);
-            id.setText(personId);
-            Glide.with(this).load(String.valueOf(personPhoto)).into(image);
-        }
-    }
 
 
-    private void signOut() {
-        mGoogleSignInClient.signOut()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // ...
-
-                        finish();
-                    }
-                });
     }
 }

@@ -14,25 +14,29 @@
 
 
     <LinearLayout
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_gravity="right"
-        android:gravity="right"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_marginRight="10dp"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:visibility="visible">
 
         <ImageView
+            android:id="@+id/profile_image"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/ff"/>
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/user" />
+
         <ImageView
+            android:id="@+id/logOUT"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/logout"/>
+            android:background="@drawable/log_put"
+            android:visibility="gone" />
 
     </LinearLayout>
 
@@ -53,7 +57,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="150dp"
         android:gravity="center">
 
         <androidx.cardview.widget.CardView
@@ -196,6 +200,7 @@
             android:layout_width="350dp"
             android:layout_gravity="center"
             android:layout_height="80dp"
+            android:visibility="gone"
             app:cardCornerRadius="10dp"
             app:cardElevation="1dp"
             app:cardPreventCornerOverlap="false"
@@ -265,6 +270,7 @@
             android:layout_height="80dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="1dp"
+
             app:cardPreventCornerOverlap="false"
             android:layout_marginTop="5dp">
             <LinearLayout
@@ -273,6 +279,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/gradient_rect"
                 android:alpha=".8"
+
                 android:orientation="horizontal">
 
                 <LinearLayout

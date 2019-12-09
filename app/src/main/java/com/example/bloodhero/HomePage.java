@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +25,7 @@ public class HomePage extends AppCompatActivity {
     TextView donornumber , ownReq , sameDonorNumber , reqnumber  ;
     FirebaseAuth mauth ;
     String uid ;
+    ImageView profile , logout ;
 
     int count = 0 ;
 
@@ -49,7 +51,8 @@ public class HomePage extends AppCompatActivity {
         ownReq = findViewById(R.id.ownReqNum);
         sameDonorNumber = findViewById(R.id.sameReqList);
         reqnumber = findViewById(R.id.reqNumber);
-
+        profile = findViewById(R.id.profile_image);
+        logout = findViewById(R.id.logOUT);
 
         findDonorBtn = findViewById(R.id.findDonorBtn);
         addReqBtn = findViewById(R.id.addReq_btn);
@@ -60,13 +63,35 @@ public class HomePage extends AppCompatActivity {
         //setON Click listeners
 
 
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent  n = new Intent(getApplicationContext() , Profile.class);
+                startActivity(n);
+
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+               FirebaseAuth mauth  =FirebaseAuth.getInstance() ;
+               mauth.signOut();
+               Intent  n = new Intent(getApplicationContext() , LogInPage.class);
+               startActivity(n);
+                finish();
+            }
+        });
+
         addReqBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
 
-                i = new Intent(getApplicationContext() ,LogInPage.class );
+                i = new Intent(getApplicationContext() ,add_blood_req.class );
                 startActivity(i);
             }
         });

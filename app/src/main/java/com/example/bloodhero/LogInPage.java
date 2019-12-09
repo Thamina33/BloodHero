@@ -10,6 +10,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -43,6 +45,9 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LogInPage extends AppCompatActivity {
 
+    EditText phoneNumEdit ;
+    String  phone ;
+    ImageButton nextBtn ;
 
     SignInButton signin;
     GoogleSignInClient mGoogleSignInClient;
@@ -72,7 +77,10 @@ public class LogInPage extends AppCompatActivity {
         signin = findViewById(R.id.sign_in_button);
         relativeLayout = findViewById(R.id.loadingPanel);
         relativeLayout.setVisibility(View.GONE);
+//init view
+        nextBtn = findViewById(R.id.nextBtnmobileverification) ;
 
+        phoneNumEdit = findViewById(R.id.phonenumEditText);
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +91,32 @@ public class LogInPage extends AppCompatActivity {
                         signIn();
                         break;
                     // ...
+                }
+
+            }
+        });
+
+
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if((phoneNumEdit.getText().toString().length()) == 11 ){
+
+
+                    phone ="+88"+ phoneNumEdit.getText().toString() ;
+
+                    Intent  i = new Intent(getApplicationContext() , otpActivity.class);
+
+                    i.putExtra("PHONE" , phone);
+                    phoneNumEdit.setText("");//seting the text to zero
+                    phoneNumEdit.setHint("01778445517"); //setting the random hint
+                    startActivity(i);
+
+                }
+                else {
+
+                    Toast.makeText(LogInPage.this,"Number Format Invalid!!",Toast.LENGTH_LONG).show();
                 }
 
             }

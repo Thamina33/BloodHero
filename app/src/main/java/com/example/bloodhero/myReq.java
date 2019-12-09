@@ -1,10 +1,12 @@
 package com.example.bloodhero;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,7 +45,24 @@ public class myReq extends AppCompatActivity {
         mauth = FirebaseAuth.getInstance() ;
         uid = mauth.getUid() ;
 
+Button back = findViewById(R.id.BACKBTN);
+        Button add = findViewById(R.id.addbtn);
 
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext() , add_blood_req.class);
+                startActivity(i);
+            }
+        });
+
+back.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        finish();
+    }
+});
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mRef = mFirebaseDatabase.getReference("bloodReqRepo");

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,7 @@ public class requestedBloodList extends AppCompatActivity {
     FirebaseDatabase mFirebaseDatabase ;
     DatabaseReference mRef , likeRef;
     FirebaseAuth mauth ;
+    Button back ;
 
     String uid  ;
     String searchText ;
@@ -40,7 +42,14 @@ public class requestedBloodList extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+        back = findViewById(R.id.BACKBTN);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                finish();
+            }
+        });
 
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();

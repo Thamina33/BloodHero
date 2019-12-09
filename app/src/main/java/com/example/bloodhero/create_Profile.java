@@ -36,6 +36,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -118,6 +119,22 @@ public class create_Profile extends AppCompatActivity {
 
 
         loader.setVisibility(View.GONE);
+
+        FirebaseAuth  mauth = FirebaseAuth.getInstance();
+        FirebaseUser user = mauth.getCurrentUser() ;
+
+        try{
+            dEmail.setText(user.getPhoneNumber());
+
+        }
+        catch ( Exception e )
+        {
+
+            dEmail.setHint("Enter Your Number");
+
+
+        }
+
      //   dEmail.setText(email);
         //selectinng blood
 
@@ -448,8 +465,7 @@ public class create_Profile extends AppCompatActivity {
 
 
                     uploadDataToFireBase(Name, Email, gndr, bldGroup, numVisibility);
-                    Toast.makeText(getApplicationContext(), Name + "" + Email + "" + bldGroup, Toast.LENGTH_SHORT)
-                            .show();
+
 
                 } else {
                     Toast.makeText(getApplicationContext(), "Fill the Data Properly", Toast.LENGTH_SHORT)
@@ -644,62 +660,8 @@ public class create_Profile extends AppCompatActivity {
         finish();
 
     }
-/*
-        String id = mRef.push().getKey();
-
-        getProfile model = new getProfile(id, uid, name, email, gndr, bldGroup, numVisibility , "TRUE" , null);
-
-        mRef.child(uid).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-                mbar.setVisibility(View.INVISIBLE);
-
-                Intent intent = new Intent(create_Profile.this,HomePage.class);
-                startActivity(intent);
-                finish();
-             //   OpenDialogue();
 
 
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(), "Error :" + e.getMessage(), Toast.LENGTH_SHORT)
-                        .show();
-                mbar.setVisibility(View.GONE);
-            }
-        });
-          }
-        */
-
-
-
-
-    private void OpenDialogue() {
-
-        final Dialog dialog = new Dialog(create_Profile.this);
-        dialog.setContentView(R.layout.done_dialogue_in_profile);
-
-        Button okBtn = dialog.findViewById(R.id.okBtn);
-
-
-        dialog.setCancelable(false);
-
-        dialog.show();
-
-
-        okBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                dialog.dismiss();
-                finish();
-            }
-        });
-
-
-    }
 
 
 }
