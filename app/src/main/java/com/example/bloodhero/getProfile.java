@@ -2,12 +2,13 @@ package com.example.bloodhero;
 
 public class getProfile {
 
-    String id,uid,name,mail,gender,bloodgroup,num_visibility , is_available , user_pp;
+    String id,uid,name,mail,gender,bloodgroup,num_visibility , is_available , imageLink ,username , pass , co_ordName , status ;
 
     public getProfile() {
     }
 
-    public getProfile(String id, String uid, String name, String mail, String gender, String bloodgroup, String num_visibility, String is_available, String user_pp) {
+
+    public getProfile(String id, String uid, String name, String mail, String gender, String bloodgroup, String num_visibility, String is_available, String imageLink, String username, String pass, String co_ordName, String status) {
         this.id = id;
         this.uid = uid;
         this.name = name;
@@ -16,15 +17,51 @@ public class getProfile {
         this.bloodgroup = bloodgroup;
         this.num_visibility = num_visibility;
         this.is_available = is_available;
-        this.user_pp = user_pp;
+        this.imageLink = imageLink;
+        this.username = username;
+        this.pass = pass;
+        this.co_ordName = co_ordName;
+        this.status = status;
     }
 
-    public String getUser_pp() {
-        return user_pp;
+    public String getStatus() {
+        return status;
     }
 
-    public void setUser_pp(String user_pp) {
-        this.user_pp = user_pp;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public String getCo_ordName() {
+        return co_ordName;
+    }
+
+    public void setCo_ordName(String co_ordName) {
+        this.co_ordName = co_ordName;
+    }
+
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
     }
 
     public String getIs_available() {

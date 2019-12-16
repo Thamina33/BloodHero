@@ -31,14 +31,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bloodhero.DonorPackage.uploadNidToTheServer;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -56,7 +60,7 @@ import id.zelory.compressor.Compressor;
 
 public class create_Profile extends AppCompatActivity {
 
-    EditText dname, dEmail;
+    EditText dname, dEmail , cordET, dusername , dpass ;
     Uri mFilePathUri ;
     private Bitmap compressedImageFile;
     LinearLayout gmale, gfemale;
@@ -73,9 +77,11 @@ public class create_Profile extends AppCompatActivity {
     ProgressBar mbar;
     FirebaseAuth mauth ;
     StorageReference mStorageReference ;
-    String uid ;
+
     CircleImageView imageView ;
     RelativeLayout  loader ;
+    String userName , passWord , cordName ;
+    boolean cordFound = false ;
 
 
 
@@ -84,7 +90,7 @@ public class create_Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create__profile);
 
-        mRef = FirebaseDatabase.getInstance().getReference("DonorInformation");
+        mRef = FirebaseDatabase.getInstance().getReference("users");
         mStorageReference = FirebaseStorage.getInstance().getReference("profilePic") ;
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -92,16 +98,20 @@ public class create_Profile extends AppCompatActivity {
 
 
         mauth = FirebaseAuth.getInstance();
-        uid = mauth.getUid() ;
+
 //        String email  = mauth.getCurrentUser().getEmail() ;
         loader = findViewById(R.id.loadingPanel) ;
         dname = findViewById(R.id.dName);
         dEmail = findViewById(R.id.dEmail);
         gmale = findViewById(R.id.gmale);
+        dusername = findViewById(R.id.duserName);
+        cordET = findViewById(R.id.co_ordinatorName);
+        dpass =findViewById(R.id.dpass);
         gfemale = findViewById(R.id.gfemale);
         m_icon = findViewById(R.id.m_icon);
         f_icon = findViewById(R.id.f_icon);
         f_txt = findViewById(R.id.f_txt);
+
         m_txt = findViewById(R.id.m_txt);
         apos = findViewById(R.id.apos);
         amin = findViewById(R.id.amin);
@@ -120,20 +130,7 @@ public class create_Profile extends AppCompatActivity {
 
         loader.setVisibility(View.GONE);
 
-        FirebaseAuth  mauth = FirebaseAuth.getInstance();
-        FirebaseUser user = mauth.getCurrentUser() ;
 
-        try{
-            dEmail.setText(user.getPhoneNumber());
-
-        }
-        catch ( Exception e )
-        {
-
-            dEmail.setHint("Enter Your Number");
-
-
-        }
 
      //   dEmail.setText(email);
         //selectinng blood
@@ -459,20 +456,41 @@ public class create_Profile extends AppCompatActivity {
                 mbar.setVisibility(View.VISIBLE);
                 String Name = dname.getText().toString();
                 String Email = dEmail.getText().toString();
+                userName = dusername.getText().toString();
+                passWord = dpass.getText().toString();
+                cordName =cordET.getText().toString() ;
 
 
-                if (!TextUtils.isEmpty(Name) && !TextUtils.isEmpty(Email) && !bldGroup.contains("bloodGroup") && !gndr.contains("gender")) {
+                if(checkTheCoOrdinatorName(cordName) && !cordName.isEmpty())
+                {
+                    if (!TextUtils.isEmpty(Name) && !TextUtils.isEmpty(Email) && !bldGroup.contains("bloodGroup") && !gndr.contains("gender")) {
 
 
-                    uploadDataToFireBase(Name, Email, gndr, bldGroup, numVisibility);
+                        uploadDataToFireBase(Name, Email, gndr, bldGroup, numVisibility);
 
 
-                } else {
-                    Toast.makeText(getApplicationContext(), "Fill the Data Properly", Toast.LENGTH_SHORT)
-                            .show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Fill the Data Properly", Toast.LENGTH_SHORT)
+                                .show();
+                        mbar.setVisibility(View.GONE);
+
+                    }
+
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "Coordinator Name Could Not Be Found!!", Toast.LENGTH_SHORT)
+                        .show();
                     mbar.setVisibility(View.GONE);
 
                 }
+
+
+
+
+
+
+
 
 
             }
@@ -515,6 +533,42 @@ public class create_Profile extends AppCompatActivity {
 
 
     }
+
+    private boolean checkTheCoOrdinatorName(String cordName) {
+
+        DatabaseReference mref  = FirebaseDatabase.getInstance().getReference("login").child("co-ordinator").child(cordName);
+
+
+        mref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists())
+                {
+                   cordFound = true ;
+                }
+                else {
+                    cordFound = false ;
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+               cordFound  = false ;
+
+
+            }
+        });
+
+
+        return cordFound;
+
+
+
+    }
+
     @Override
     protected void onActivityResult(
             int requestCode, int resultCode, Intent data) {
@@ -575,7 +629,7 @@ public class create_Profile extends AppCompatActivity {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             compressedImageFile.compress(Bitmap.CompressFormat.JPEG, 40, baos);
             byte[] imageData = baos.toByteArray();
-            UploadTask filePath = mStorageReference.child(randomName+uid + ".jpg").putBytes(imageData);
+            UploadTask filePath = mStorageReference.child(randomName+ ".jpg").putBytes(imageData);
             filePath.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -595,16 +649,28 @@ public class create_Profile extends AppCompatActivity {
                     //  String ts =mDatabaseReference.push().getKey() ;
                     String id = mRef.push().getKey();
 
-                    getProfile model = new getProfile(id, uid, name, email, gndr, bldGroup, numVisibility , "TRUE" , downloaduri.toString());
+                    final getProfile model = new getProfile(id, userName+passWord, name, email, gndr, bldGroup, numVisibility , "TRUE" , downloaduri.toString() , userName , passWord , cordName  , "inactive");
 
                     //   String imageUploadid = mDatabaseReference.push().getKey() ;
 
                     //adding imge upload
-                    mRef.child(uid).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    mRef.child(userName+passWord).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            loader.setVisibility(View.GONE);
-                            sentToHome();
+
+
+                            DatabaseReference mref = FirebaseDatabase.getInstance().getReference("requestedUser").child("donor");
+                            mref.child(userName+passWord).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+
+                                    loader.setVisibility(View.GONE);
+                                    sentToHome();
+                                }
+                            });
+
+
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -655,7 +721,7 @@ public class create_Profile extends AppCompatActivity {
         }
 
     private void sentToHome() {
-        Intent intent = new Intent(create_Profile.this,HomePage.class);
+        Intent intent = new Intent(create_Profile.this , uploadNidToTheServer.class);
         startActivity(intent);
         finish();
 
