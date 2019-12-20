@@ -20,6 +20,7 @@ public class loginChooser extends AppCompatActivity {
         final Button donor = findViewById(R.id.donor);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+
         if (user != null)
         {
 
@@ -29,9 +30,7 @@ public class loginChooser extends AppCompatActivity {
 
         }
         else {
-            Intent i = new Intent(getApplicationContext() , LogInPage.class);
-            startActivity(i);
-            finish();
+
 
         }
 
@@ -51,7 +50,7 @@ public class loginChooser extends AppCompatActivity {
         donor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                o = new Intent(getApplicationContext() ,LogInPage.class );
+                o = new Intent(getApplicationContext() ,create_Profile.class );
                 startActivity(o);
             }
         });

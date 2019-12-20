@@ -75,7 +75,7 @@ public class Profile extends AppCompatActivity {
                 bg.setText(profile.getBloodgroup());
                 name.setText(profile.getName());
                 ph.setText(profile.getMail());
-                Glide.with(getApplicationContext()) .load(profile.getUser_pp()).diskCacheStrategy(DiskCacheStrategy.ALL).into(profilee) ;
+                Glide.with(getApplicationContext()) .load(profile.getImageLink()).diskCacheStrategy(DiskCacheStrategy.ALL).into(profilee) ;
 
 
             }

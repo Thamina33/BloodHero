@@ -89,7 +89,7 @@ public class allDonorList extends AppCompatActivity {
                 //  holder.setIsRecyclable(false); // dunno why if it crash then remove it
 
                 holder.SetDeatils(getApplicationContext(), model.getName(), model.getGender(),
-                        model.getBloodgroup(), model.getMail(), model.getUser_pp());
+                        model.getBloodgroup(), model.getMail(), model.getImageLink());
 
 
 

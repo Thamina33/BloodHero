@@ -522,7 +522,7 @@ public class add_blood_req extends AppCompatActivity {
                 getProfile model = dataSnapshot.getValue(getProfile.class);
 
                 ph = model.getMail();
-                pp = model.getUser_pp();
+                pp = model.getImageLink();
 
 
             }

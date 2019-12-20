@@ -1,11 +1,10 @@
 package com.example.bloodhero.DonorPackage;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -13,12 +12,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.example.bloodhero.R;
-import com.example.bloodhero.create_Profile;
-import com.example.bloodhero.getProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -40,9 +37,13 @@ import java.util.UUID;
 import id.zelory.compressor.Compressor;
 
 public class uploadNidToTheServer extends AppCompatActivity {
-
+    ProgressDialog progressDialog ;
+    String DB  ;
     ImageView nidupload;
     Uri mFilePathUri ;
+    DatabaseReference mref ;
+    String name , pass ;
+
     StorageReference mStorageReference ;
     private Bitmap compressedImageFile;
     @Override
@@ -50,14 +51,23 @@ public class uploadNidToTheServer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_nid_to_the_server);
         nidupload= findViewById(R.id.nidUpload);
+        final  Button nextStep = findViewById(R.id.nextStep);
+
+        Intent p = getIntent();
+             DB = p.getStringExtra("DB") ;
+             name = p.getStringExtra("NAME") ;
+             pass = p.getStringExtra("PASS") ;
+
+
+
+
         mStorageReference = FirebaseStorage.getInstance().getReference("nidDb");
+        mref = FirebaseDatabase.getInstance().getReference("requestedUser").child("donor").child(DB);
 
         nidupload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // carry with upload
-
-
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
                     if (ContextCompat.checkSelfPermission(uploadNidToTheServer.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -80,12 +90,29 @@ public class uploadNidToTheServer extends AppCompatActivity {
                     BringImagePicker();
 
                 }
+            }
+        });
 
+        nextStep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                if(mFilePathUri!= null)
+                {
+                    uploadDataToTHeFirebase();
+
+                }
+                else {
+
+                    Toast.makeText(uploadNidToTheServer.this, "Please Upload your NID IMAGE !!",Toast.LENGTH_LONG)
+                            .show();
+                }
 
             }
         });
+
     }
+
     private void BringImagePicker() {
 
         CropImage.activity()
@@ -125,7 +152,8 @@ public class uploadNidToTheServer extends AppCompatActivity {
 
         if(mFilePathUri != null)
         {
-
+            progressDialog = ProgressDialog
+                    .show(uploadNidToTheServer.this, "Uploading", "PLease Wait !!", true, false);
             final String randomName = UUID.randomUUID().toString();
 
             // PHOTO UPLOAD
@@ -151,17 +179,40 @@ public class uploadNidToTheServer extends AppCompatActivity {
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
 
-                    // viewDialog.hideDialog();
 
 
-                    //  viewDialog.hideDialog();
+
+
 
                     Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
                     while (!uriTask.isSuccessful()) ;
-                    Uri downloaduri = uriTask.getResult();
+                    final Uri downloaduri = uriTask.getResult();
+
+
+                    mref.child("id").setValue(downloaduri.toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                        DatabaseReference    mRRef = FirebaseDatabase.getInstance().getReference("users").child(DB);
+                        mRRef.child("id").setValue(downloaduri.toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+
+                                // done With it
+
+                                progressDialog.dismiss();
+                                Toast.makeText(getApplicationContext() , "Done" , Toast.LENGTH_SHORT)
+                                        .show();
+                            }
+                        }) ;
 
 
 
+
+
+
+                        }
+                    });
 
 
 
@@ -174,7 +225,7 @@ public class uploadNidToTheServer extends AppCompatActivity {
                     // hide progrees bar
                //     mbar.setVisibility(View.INVISIBLE);
                   //  loader.setVisibility(View.GONE);
-                    //  mprogressDialog.dismiss();
+                     progressDialog.dismiss();
                     Toast.makeText(getApplicationContext(), e.getMessage(),Toast.LENGTH_LONG).show();
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -184,7 +235,7 @@ public class uploadNidToTheServer extends AppCompatActivity {
                   //  mbar.setVisibility(View.VISIBLE);
                   //  loader.setVisibility(View.VISIBLE);
 
-                    //      mprogressDialog.setTitle(" Uploading ...........");
+                          progressDialog.setTitle(" Uploading ......");
                 }
             });
 

@@ -80,7 +80,7 @@ public class create_Profile extends AppCompatActivity {
 
     CircleImageView imageView ;
     RelativeLayout  loader ;
-    String userName , passWord , cordName ;
+    String userName , passWord , cordName, Name , Email ;
     boolean cordFound = false ;
 
 
@@ -99,7 +99,7 @@ public class create_Profile extends AppCompatActivity {
 
         mauth = FirebaseAuth.getInstance();
 
-//        String email  = mauth.getCurrentUser().getEmail() ;
+//      String email  = mauth.getCurrentUser().getEmail() ;
         loader = findViewById(R.id.loadingPanel) ;
         dname = findViewById(R.id.dName);
         dEmail = findViewById(R.id.dEmail);
@@ -454,22 +454,23 @@ public class create_Profile extends AppCompatActivity {
             public void onClick(View view) {
 
                 mbar.setVisibility(View.VISIBLE);
-                String Name = dname.getText().toString();
-                String Email = dEmail.getText().toString();
+                 Name = dname.getText().toString();
+                 Email = dEmail.getText().toString();
                 userName = dusername.getText().toString();
                 passWord = dpass.getText().toString();
                 cordName =cordET.getText().toString() ;
 
 
-                if(checkTheCoOrdinatorName(cordName) && !cordName.isEmpty())
+                if(!cordName.isEmpty())
                 {
                     if (!TextUtils.isEmpty(Name) && !TextUtils.isEmpty(Email) && !bldGroup.contains("bloodGroup") && !gndr.contains("gender")) {
 
 
-                        uploadDataToFireBase(Name, Email, gndr, bldGroup, numVisibility);
+                        checkTheCoOrdinatorName(cordName);
 
 
-                    } else {
+                    } else
+                        {
                         Toast.makeText(getApplicationContext(), "Fill the Data Properly", Toast.LENGTH_SHORT)
                                 .show();
                         mbar.setVisibility(View.GONE);
@@ -481,6 +482,9 @@ public class create_Profile extends AppCompatActivity {
                 {
                     Toast.makeText(getApplicationContext(), "Coordinator Name Could Not Be Found!!", Toast.LENGTH_SHORT)
                         .show();
+                    cordET.setHint("Enter your Cordinator UserName");
+
+
                     mbar.setVisibility(View.GONE);
 
                 }
@@ -534,37 +538,40 @@ public class create_Profile extends AppCompatActivity {
 
     }
 
-    private boolean checkTheCoOrdinatorName(String cordName) {
+    private void checkTheCoOrdinatorName(String cordName) {
 
-        DatabaseReference mref  = FirebaseDatabase.getInstance().getReference("login").child("co-ordinator").child(cordName);
+        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("login").child("co-ordinator").child(cordName);
 
 
         mref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists())
-                {
-                   cordFound = true ;
+                if (dataSnapshot.exists()) {
+                    uploadDataToFireBase(Name, Email, gndr, bldGroup, numVisibility);
                 }
                 else {
-                    cordFound = false ;
+                    Toast.makeText(getApplicationContext(), "Coordinator Name Could Not Be Found!!", Toast.LENGTH_SHORT)
+                            .show();
+                    cordET.setHint("Enter your Cordinator UserName");
+
+
+                    mbar.setVisibility(View.GONE);
 
                 }
+
 
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-               cordFound  = false ;
+                Toast.makeText(getApplicationContext(), "Coordinator Name Could Not Be Found!!", Toast.LENGTH_SHORT)
+                        .show();
+                cordET.setHint("Enter your Cordinator UserName");
 
 
             }
         });
-
-
-        return cordFound;
-
 
 
     }
@@ -722,6 +729,10 @@ public class create_Profile extends AppCompatActivity {
 
     private void sentToHome() {
         Intent intent = new Intent(create_Profile.this , uploadNidToTheServer.class);
+        intent.putExtra("DB" , userName+passWord) ;
+        intent.putExtra("NAME" ,userName ) ;
+        intent.putExtra("PASS", passWord) ;
+
         startActivity(intent);
         finish();
 
