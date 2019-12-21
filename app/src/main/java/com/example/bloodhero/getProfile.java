@@ -2,13 +2,15 @@ package com.example.bloodhero;
 
 public class getProfile {
 
-    String id,uid,name,mail,gender,bloodgroup,num_visibility , is_available , imageLink ,username , pass , co_ordName , status ;
+    String id,uid,name,mail,gender,bloodgroup,num_visibility , is_available , imageLink ,username , pass , co_ordName , status ,nottificationID  ;
 
     public getProfile() {
     }
 
-
-    public getProfile(String id, String uid, String name, String mail, String gender, String bloodgroup, String num_visibility, String is_available, String imageLink, String username, String pass, String co_ordName, String status) {
+    public getProfile(String id, String uid, String name, String mail, String gender,
+                      String bloodgroup, String num_visibility, String is_available,
+                      String imageLink, String username, String pass,
+                      String co_ordName, String status, String nottificationID) {
         this.id = id;
         this.uid = uid;
         this.name = name;
@@ -22,6 +24,15 @@ public class getProfile {
         this.pass = pass;
         this.co_ordName = co_ordName;
         this.status = status;
+        this.nottificationID = nottificationID;
+    }
+
+    public String getNottificationID() {
+        return nottificationID;
+    }
+
+    public void setNottificationID(String nottificationID) {
+        this.nottificationID = nottificationID;
     }
 
     public String getStatus() {

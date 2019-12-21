@@ -656,7 +656,11 @@ public class create_Profile extends AppCompatActivity {
                     //  String ts =mDatabaseReference.push().getKey() ;
                     String id = mRef.push().getKey();
 
-                    final getProfile model = new getProfile(id, userName+passWord, name, email, gndr, bldGroup, numVisibility , "TRUE" , downloaduri.toString() , userName , passWord , cordName  , "inactive");
+                    final getProfile model = new
+                      getProfile(id, userName+passWord, name, email, gndr,
+                            bldGroup, numVisibility , "TRUE" ,
+                            downloaduri.toString() , userName , passWord , cordName  ,
+                            "inactive" , "still low");
 
                     //   String imageUploadid = mDatabaseReference.push().getKey() ;
 

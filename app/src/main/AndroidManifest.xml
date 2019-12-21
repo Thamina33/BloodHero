@@ -11,14 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DonorPackage.uploadNidToTheServer">
-
-        </activity>
-        <activity android:name=".loginChooser" >
-
-
-
-        </activity>
+        <activity android:name=".DonorPackage.ListActivity"></activity>
+        <activity android:name=".DonorPackage.donorDashBoard" />
+        <activity android:name=".DonorPackage.uploadNidToTheServer" />
+        <activity android:name=".loginChooser" />
         <activity android:name=".otpActivity" />
         <activity android:name=".splashActivity">
             <intent-filter>
