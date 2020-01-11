@@ -456,7 +456,7 @@ public class add_blood_req extends AppCompatActivity {
 
         /// String postID , uid , needer  , loc , timee , datee , bg ;
 
-        modelForBloodReq model = new modelForBloodReq(id, uid, name, lOc, time, date, bldGroup, ph, pp);
+        modelForBloodReq model = new modelForBloodReq(id, uid, name, lOc, time, date, bldGroup, ph, pp , "Pending");
 
         mRef.child(id).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

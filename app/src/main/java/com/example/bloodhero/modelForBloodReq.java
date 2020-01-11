@@ -1,13 +1,12 @@
 package com.example.bloodhero;
-
 public class modelForBloodReq {
 
-    String postID , uid , needer  , loc , timee , datee , bg ,phone, purl ;
+    String postID , uid , needer  , loc , timee , datee , bg ,phone, purl , status  ;
 
     public modelForBloodReq() {
     }
 
-    public modelForBloodReq(String postID, String uid, String needer, String loc, String timee, String datee, String bg, String phone, String purl) {
+    public modelForBloodReq(String postID, String uid, String needer, String loc, String timee, String datee, String bg, String phone, String purl, String status) {
         this.postID = postID;
         this.uid = uid;
         this.needer = needer;
@@ -17,6 +16,15 @@ public class modelForBloodReq {
         this.bg = bg;
         this.phone = phone;
         this.purl = purl;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getPurl() {

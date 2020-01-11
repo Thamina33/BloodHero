@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.bloodhero.LogInPage;
 import com.example.bloodhero.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -188,36 +190,26 @@ public class uploadNidToTheServer extends AppCompatActivity {
                     while (!uriTask.isSuccessful()) ;
                     final Uri downloaduri = uriTask.getResult();
 
-
+                //    mref.child("counter").setValue("00") ;
                     mref.child("id").setValue(downloaduri.toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
 
-                        DatabaseReference    mRRef = FirebaseDatabase.getInstance().getReference("users").child(DB);
+                        final DatabaseReference mRRef = FirebaseDatabase.getInstance().getReference("users").child(DB);
                         mRRef.child("id").setValue(downloaduri.toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
 
+                                mRRef.child("counter").setValue("00") ;
                                 // done With it
-
                                 progressDialog.dismiss();
-                                Toast.makeText(getApplicationContext() , "Done" , Toast.LENGTH_SHORT)
-                                        .show();
+                                Intent oi = new Intent(getApplicationContext()  , loginPageForDonor.class) ;
+                                startActivity( oi );
+                                finish();
                             }
                         }) ;
-
-
-
-
-
-
                         }
                     });
-
-
-
-
-
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -230,7 +222,8 @@ public class uploadNidToTheServer extends AppCompatActivity {
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                 @Override
-                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+
+                public void onProgress( @NonNull UploadTask.TaskSnapshot taskSnapshot) {
                     //   viewDialog.showDialog();
                   //  mbar.setVisibility(View.VISIBLE);
                   //  loader.setVisibility(View.VISIBLE);

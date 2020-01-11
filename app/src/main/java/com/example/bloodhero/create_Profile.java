@@ -454,8 +454,8 @@ public class create_Profile extends AppCompatActivity {
             public void onClick(View view) {
 
                 mbar.setVisibility(View.VISIBLE);
-                 Name = dname.getText().toString();
-                 Email = dEmail.getText().toString();
+                Name = dname.getText().toString();
+                Email = dEmail.getText().toString();
                 userName = dusername.getText().toString();
                 passWord = dpass.getText().toString();
                 cordName =cordET.getText().toString() ;

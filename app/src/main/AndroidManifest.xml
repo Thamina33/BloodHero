@@ -11,18 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DonorPackage.ListActivity"></activity>
-        <activity android:name=".DonorPackage.donorDashBoard" />
+        <activity android:name=".DonorPackage.pendingPageForDonor"></activity>
+        <activity android:name=".DonorPackage.loginPageForDonor"></activity>
+        <activity android:name=".DonorPackage.onGoingDontaion" />
+        <activity android:name=".DonorPackage.ListActivity" />
+        <activity android:name=".DonorPackage.donorDashBoard"></activity>
         <activity android:name=".DonorPackage.uploadNidToTheServer" />
-        <activity android:name=".loginChooser" />
-        <activity android:name=".otpActivity" />
-        <activity android:name=".splashActivity">
+        <activity android:name=".loginChooser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".otpActivity" />
+        <activity android:name=".splashActivity" />
         <activity android:name=".requestedBloodList" />
         <activity android:name=".splashScreen" />
         <activity android:name=".add_blood_req" />

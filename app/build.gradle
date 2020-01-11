@@ -24,6 +24,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.android.support:appcompat-v7:29.+'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
     implementation 'com.google.android.material:material:1.1.0-beta01'
     androidTestImplementation 'androidx.test:runner:1.2.0'
@@ -48,6 +50,9 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    // multi screen support
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
 
     //image circularview
     implementation 'de.hdodenhof:circleimageview:3.0.1'

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:weightSum="1.00">
+        <TextView
+
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textColor="#404040"
+            android:textSize="@dimen/_13sdp"
+            android:layout_weight=".2"/>
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#404040"
+            android:textSize="@dimen/_13sdp"
+            android:layout_weight=".6"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:weightSum="1.00">
+        <TextView
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="wrap_content"
+            android:text="Blood Group"
+            android:textColor="#404040"
+            android:textSize="@dimen/_13sdp"
+            android:layout_weight=".2"/>
+        <TextView
+            android:id="@+id/bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#404040"
+            android:textSize="@dimen/_13sdp"
+            android:layout_weight=".6"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:weightSum="1.00">
+        <TextView
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="wrap_content"
+            android:text="Area"
+            android:textColor="#404040"
+            android:textSize="@dimen/_13sdp"
+            android:layout_weight=".2"/>
+        <TextView
+            android:id="@+id/area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#404040"
+            android:textSize="@dimen/_13sdp"
+            android:layout_weight=".6"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:weightSum="1.00">
+        <TextView
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="wrap_content"
+            android:text="Phone"
+            android:textColor="#404040"
+            android:textSize="@dimen/_13sdp"
+            android:layout_weight=".2"/>
+        <TextView
+            android:id="@+id/ph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#404040"
+            android:textSize="@dimen/_13sdp"
+            android:layout_weight=".6"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:weightSum="1.00">
+        <TextView
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:textColor="#404040"
+            android:textSize="@dimen/_13sdp"
+            android:layout_weight=".2"/>
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#404040"
+            android:textSize="@dimen/_13sdp"
+            android:layout_weight=".6"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/acceptBtn"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:text="Make It Complete"
+        android:textSize="@dimen/_16sdp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/gradient_rect"/>
+    <Button
+        android:id="@+id/homeBtn"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:text="Go To Home"
+        android:textSize="@dimen/_16sdp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/gradient_rect"/>
+
+</LinearLayout>
